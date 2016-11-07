@@ -7,7 +7,6 @@
       <h3>Seleccione una sección:</h3>
     <asp:DropDownList ID="DropDownList1" cssclass="form-control" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
         <asp:ListItem>--Lista de secciones--</asp:ListItem>
-        <asp:ListItem>Opcion 1</asp:ListItem>
       </asp:DropDownList>
     <asp:Button ID="BtnCancelarCupo" cssclass="form-control" runat="server" Text="Cancelar" />
     <asp:Button ID="BtnSigCupo"  cssclass="form-control" runat="server" Text="Siguiente" Enabled="False"/>

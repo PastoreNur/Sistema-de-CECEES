@@ -14,7 +14,7 @@ deportivas y de otra indole que la institución realice.
 <p>
 2. Proveer a mi hijo/a de los recursos necesarios para las clases y trabajos exaula.
 </p>
-<p>3.Acudir a las reuniones progrÍunadas por la Dirección,subdirección,coordinación u Orientadordegradol'escuela
+<p>3.Acudir a las reuniones programadas por la Dirección, subdirección, coordinación u Orientador de grado y escuela
 de padres según horario establecido.
 </p>
 <p>
@@ -25,7 +25,7 @@ coordinación o maestro orientador (No en horas de clases).
 5. Responder por cualquier anomalia que mi hijo ocasione en perjuicio de los bienes de la institución o persona.
 </p>
 <p>
-6. Si p¡ofeso otra religión, respetaré la formación y actividades religiosas que se realicen sabiendo que esta e§ una
+6. Si profeso otra religión, respetaré la formación y actividades religiosas que se realicen sabiendo que esta e§ una
 institución católica.
 </p>
     <p>
@@ -87,6 +87,8 @@ solvente antes de las evaluaciones trimestrales o de periodos.
         }
 </script>
     <asp:Button ID="BtnCancelarCompromiso" cssclass="form-control" runat="server" Text="Cancelar" />
-    <asp:Button ID="BtnSigcompromiso" cssclass="form-control" runat="server" Text="Siguiente" CausesValidation="False" Enabled="False" />
+    <asp:Button ID="BtnSigcompromiso" cssclass="form-control" runat="server" Text="Siguiente" CausesValidation="False" Enabled="False" /></>
+  <br />
+    <br />
 </asp:Content>
 
