@@ -9,6 +9,12 @@ public partial class Verificacioncupo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+ 
     }
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        BtnSigCupo.Enabled = true;
+    }
+
 }

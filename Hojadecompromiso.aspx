@@ -8,7 +8,7 @@
 
     </h3>
     <p>
-1. Participar y Colaborar con las actividades académicas, culturales, sociales, religiosas, financieras, ecológicas,\n
+1. Participar y Colaborar con las actividades académicas, culturales, sociales, religiosas, financieras, ecológicas,
 deportivas y de otra indole que la institución realice.
 </p>
 <p>
@@ -76,8 +76,17 @@ solvente antes de las evaluaciones trimestrales o de periodos.
         Leído lo anterior y dando fe, firmo la presente.
     </h3>
     <p>(Marcar la casilla para seguir con la matricula, firmar antes de hoja de compromiso con el encargado de la matricula)</p>
-    <asp:CheckBox ID="ChcBCompromiso" Text="Si, estoy de acuerdo" runat="server" Checked ="false" OnCheckedChanged="ChcBCompromiso_CheckedChanged" AutoPostBack="True" />
-    <asp:Button ID="BtnCancelarCompromiso" runat="server" Text="Cancelar" />
-    <asp:Button ID="BtnSigcompromiso" runat="server" Text="Siguiente" CausesValidation="False" Enabled="False" EnableTheming="True" Visible="true" />
+     <asp:CheckBox ID="ChcBCompromiso" cssclass="form-control" Text="Si, estoy de acuerdo" runat="server" Checked ="false" OnCheckedChanged="ChcBCompromiso_CheckedChanged" AutoPostBack="True" />
+    <script>
+        window.onload=function(){
+        var pos=window.name || 0;
+        window.scrollTo(0,pos);
+        }
+        window.onunload=function(){
+        window.name=self.pageYOffset || (document.documentElement.scrollTop+document.body.scrollTop);
+        }
+</script>
+    <asp:Button ID="BtnCancelarCompromiso" cssclass="form-control" runat="server" Text="Cancelar" />
+    <asp:Button ID="BtnSigcompromiso" cssclass="form-control" runat="server" Text="Siguiente" CausesValidation="False" Enabled="False" />
 </asp:Content>
 
