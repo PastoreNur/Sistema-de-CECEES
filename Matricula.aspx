@@ -17,7 +17,7 @@
     </asp:DropDownList>
     <br />
     <h3>Fecha de nacimiento: </h3>
-    <asp:TextBox ID="TxtNacimento" cssclase="form-control" placeholder="Dia/Mes/Año" runat="server"></asp:TextBox>
+    <asp:TextBox ID="TxtNacimento" Cssclass="form-control" placeholder="Dia/Mes/Año" runat="server"></asp:TextBox>
     <br />
     <h3>Edad: </h3>
     <asp:TextBox ID="TxtEdad" CssClass="form-control" placeholder="Edad" runat="server"></asp:TextBox>
@@ -40,5 +40,58 @@
     <br />
     <h3>Celular:</h3>
     <asp:TextBox ID="TxtCel" CssClass="form-control" placeholder="Celular" runat="server"></asp:TextBox>
+    <br />
+    <h3>Religion que profesa:</h3>
+    <asp:TextBox ID="TxtReligion" Cssclass="form-control" placeholder="Religión" runat="server"></asp:TextBox>
+    <br />
+    <h3>Sacramentos con los que cuenta: </h3>
+        <asp:CheckBox ID="ChBBautismo" text="Bautismo." cssclass="form-control" runat="server"></asp:CheckBox>
+           <asp:CheckBox ID="ChBPrimeracom" Text="Primera comunión." cssclass="form-control" runat="server" ></asp:CheckBox>
+        <asp:CheckBox ID="ChBConfirmacion" Text="Confirmación" cssclass="form-control" runat="server" ></asp:CheckBox>
+    <br />
+    <h3>El alumno es de nuevo ingreso:</h3>
+    <asp:dropdownlist ID="DdlIngreso" cssclass="form-control" runat="server" OnTextChanged="Unnamed1_TextChanged" AutoPostBack="True">
+        <asp:ListItem></asp:ListItem>
+        <asp:ListItem>Si</asp:ListItem>
+        <asp:ListItem>No</asp:ListItem>
+    </asp:dropdownlist>
+    <br />
+    <asp:Panel ID="PnlNuevo" runat="server" Visible="false">
+
+        <h4>Institución de procedencia:</h4>
+        <asp:TextBox ID="TxtInstproc" CssClass="form-control" placeholder="Instituciòn de procedencia." runat="server"></asp:TextBox>
+
+    </asp:Panel>
+    <asp:Panel ID="PnlAntiguo"  Visible="false" runat="server">
+
+        <h4>Grado desde el que estudia aqui:</h4>
+        <asp:TextBox ID="TxtGradodesde" CssClass="form-control" runat="server"></asp:TextBox>
+        <br />
+
+    </asp:Panel>
+    <br />
+    <h3>Estudio parvularia:</h3>
+    <asp:DropDownList ID="DdlParvularia" CssClass="form-control" runat="server">
+        <asp:ListItem></asp:ListItem>
+        <asp:ListItem>Si</asp:ListItem>
+        <asp:ListItem>No</asp:ListItem>
+    </asp:DropDownList>
+    <br />
+    <h3>¿Tiene hermanos estudiando aqui?</h3>
+    <asp:DropDownList ID="DdlHermanos" CssClass="form-control" runat="server">
+        <asp:ListItem></asp:ListItem>
+        <asp:ListItem>Si</asp:ListItem>
+        <asp:ListItem>No</asp:ListItem>
+    </asp:DropDownList>
+   
+  <script>
+        window.onload=function(){
+        var pos=window.name || 0;
+        window.scrollTo(0,pos);
+        }
+        window.onunload=function(){
+        window.name=self.pageYOffset || (document.documentElement.scrollTop+document.body.scrollTop);
+        }
+</script>
 </asp:Content>
 

@@ -11,4 +11,26 @@ public partial class Matricula : System.Web.UI.Page
     {
 
     }
+
+    protected void Unnamed1_TextChanged(object sender, EventArgs e)
+    {
+        if (DdlIngreso.Text == "Si")
+        {
+            PnlAntiguo.Visible = false;
+
+            PnlNuevo.Visible = true;
+
+        }
+        else if (DdlIngreso.Text == "No")
+        {
+            PnlNuevo.Visible = false;
+
+            PnlAntiguo.Visible = true;
+        }
+        else
+        {
+            PnlAntiguo.Visible = false;
+            PnlNuevo.Visible = false;
+        }
+    }
 }
