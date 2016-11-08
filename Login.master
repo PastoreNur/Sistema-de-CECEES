@@ -1,4 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Principal.master.cs" Inherits="Principal" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Login.master.cs" Inherits="Account_Login" %>
+
 
 <!DOCTYPE html>
 
@@ -10,6 +11,8 @@
     
     <title>Complejo Educativo Católico EL Espiríritu Santo - CECEES</title>
 
+    
+    <link href="Styles/login.css" rel="stylesheet" type="text/css" />
     <link href="Styles/MainCECEES.css" rel="stylesheet" type="text/css" />
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -20,7 +23,7 @@
     <header class="cabecera">
 
         <div class="container">
-            <h1 class="Titulo">Compejo Educativo Católico el Espíritu Santo</h1>
+            <h1 class="Titulo">Complejo Educativo Católico el Espíritu Santo</h1>
         </div>
 
         <nav class="navbar navbar-default">
@@ -52,26 +55,15 @@
         </nav>
     </header>
 
-    <form id="form1" runat="server">
-        <div class="container">
+                <form id="form1" runat="server">
         
-            <section class="main row">
-
-                    <div class="col-md-9 articulo-principal">
+                    <div>
                         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
                         </asp:ContentPlaceHolder>
                     </div>
 
-                <aside class="col-md-3 aside">
-                    <h2>ASide</h2>
-                </aside>
-
-            </section>
-        
-    
-        </div>
-    </form>
+                </form>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
