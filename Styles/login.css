@@ -8,12 +8,13 @@
 
 form{
   margin: auto;
-  width: 50%;
-  max-width: 500px;
+  width: 35%;
+  max-width: 350px;
   background: #F3F3F3;
   padding: 30px;
   border: 1px solid rgba(0,0,0,0.2);
   border-radius: 5px;
+
 }
 
 h2{

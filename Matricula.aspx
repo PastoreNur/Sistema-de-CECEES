@@ -3,6 +3,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    
+    <style>
+
+        .articulo-principal {
+    background-color:white;
+        }
+
+        .checkbox{
+            padding-left: 25px;
+        }
+
+
+    </style>
+
+
+    <div class="form-registro">
 <h3>Apellidos del alumno:</h3>
         <asp:TextBox ID="TxtApellidosAlum" CssClass="form-control" placeholder="Apellidos" runat="server"></asp:TextBox>
     <br />
@@ -45,9 +61,11 @@
     <asp:TextBox ID="TxtReligion" Cssclass="form-control" placeholder="Religión" runat="server"></asp:TextBox>
     <br />
     <h3>Sacramentos con los que cuenta: </h3>
-        <asp:CheckBox ID="ChBBautismo" text="Bautismo." cssclass="form-control" runat="server"></asp:CheckBox>
-           <asp:CheckBox ID="ChBPrimeracom" Text="Primera comunión." cssclass="form-control" runat="server" ></asp:CheckBox>
-        <asp:CheckBox ID="ChBConfirmacion" Text="Confirmación" cssclass="form-control" runat="server" ></asp:CheckBox>
+        
+        <asp:CheckBox ID="ChBBautismo" text="Bautismo." cssclass="checkbox" runat="server"></asp:CheckBox>
+        <asp:CheckBox ID="ChBPrimeracom" Text="Primera comunión." cssclass="checkbox" runat="server" ></asp:CheckBox>
+        <asp:CheckBox ID="ChBConfirmacion" Text="Confirmación" cssclass="checkbox" runat="server" ></asp:CheckBox>
+        
     <br />
     <h3>El alumno es de nuevo ingreso:</h3>
     <asp:dropdownlist ID="DdlIngreso" cssclass="form-control" runat="server" OnTextChanged="Unnamed1_TextChanged" AutoPostBack="True">
@@ -93,5 +111,7 @@
         window.name=self.pageYOffset || (document.documentElement.scrollTop+document.body.scrollTop);
         }
 </script>
+
+        </div>
 </asp:Content>
 

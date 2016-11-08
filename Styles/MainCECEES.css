@@ -12,8 +12,43 @@
 
 .articulo-principal {
     background-color:#95a5a6;
+    margin-bottom: 15px;
+    border-radius: 5px;
 }
 
 .aside {
     background-color: #7f8c8d;
+    border-radius:5px;
+    padding: 10px;
+    margin:auto;
+}
+
+.form-registro{
+  margin: auto;
+  width: 60%;
+  max-width: 600px;
+  background: #F3F3F3;
+  padding: 30px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+.controles-compromiso{
+    width: 50%;
+    display: block;
+    padding: 15px;
+}
+
+.acuerdos{
+    text-align:justify;
+    padding:15px;
+    font-size: medium;
+}
+
+.control-compromiso {
+    margin: auto;
+    width: 30%;
+    max-width: 100px;
+    padding: 5px;
 }

@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="acuerdos">
     <h3>
         El reglamento interno de esta lnstitución Educativa, que conlleva, entre otros:
 
@@ -76,7 +77,9 @@ solvente antes de las evaluaciones trimestrales o de periodos.
         Leído lo anterior y dando fe, firmo la presente.
     </h3>
     <p>(Marcar la casilla para seguir con la matricula, firmar antes de hoja de compromiso con el encargado de la matricula)</p>
-     <asp:CheckBox ID="ChcBCompromiso" cssclass="form-control" Text="Si, estoy de acuerdo" runat="server" Checked ="false" OnCheckedChanged="ChcBCompromiso_CheckedChanged" AutoPostBack="True" />
+    </div>
+    <div class="controles-compromiso"> 
+    <asp:CheckBox ID="ChcBCompromiso" cssclass="form-control" Text="Si, estoy de acuerdo" runat="server" Checked ="false" OnCheckedChanged="ChcBCompromiso_CheckedChanged" AutoPostBack="True" />
     <script>
         window.onload=function(){
         var pos=window.name || 0;
@@ -86,9 +89,12 @@ solvente antes de las evaluaciones trimestrales o de periodos.
         window.name=self.pageYOffset || (document.documentElement.scrollTop+document.body.scrollTop);
         }
 </script>
-    <asp:Button ID="BtnCancelarCompromiso" cssclass="form-control" runat="server" Text="Cancelar" />
+    <span class="control-compromiso"></span>
+   <asp:Button ID="BtnCancelarCompromiso" cssclass="form-control" runat="server" Text="Cancelar" />
+    <span class="control-compromiso"></span>
     <asp:Button ID="BtnSigcompromiso" cssclass="form-control" runat="server" Text="Siguiente" CausesValidation="False" Enabled="False" /></>
-  <br />
+    </div>
+    <br />
     <br />
 </asp:Content>
 
