@@ -13,7 +13,7 @@ form{
   background: #F3F3F3;
   padding: 30px;
   border: 1px solid rgba(0,0,0,0.2);
-
+  border-radius: 5px;
 }
 
 h2{
@@ -53,4 +53,5 @@ h2{
 .iniciar:active{
   transform: scale(0.95);
 }
+
 
