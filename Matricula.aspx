@@ -113,8 +113,150 @@
     </asp:panel>
     <br />
     <br />
-   
-  <script>
+        <h2>Información de la madre:</h2>
+        <br />
+        <h3>Nombre de la madre:</h3>
+        <asp:textbox ID="TxtNomMadre" placeholder="Nombre" cssclass="form-control"  runat="server"></asp:textbox>
+        <br />
+        <h3>Profesion u oficio:</h3>
+        <asp:textbox ID="TxtProfMadre" cssclass="form-control"  runat="server"></asp:textbox>
+        <br />
+        <h3>Lugar de trabajo</h3>
+        <asp:textbox ID="TxtLugTrabMadre" cssclass="form-control" runat="server"></asp:textbox>
+         <br />
+        <h3>Telefono del trabajo:</h3>
+        <asp:textbox ID="TxtTelTrabMadre" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <h2>Información del padre:</h2>
+        <br />
+        <h3>Nombre del padre:</h3>
+        <asp:textbox ID="TxtNomPadre" placeholder="Nombre" cssclass="form-control"  runat="server"></asp:textbox>
+        <br />
+        <h3>Profesion u oficio:</h3>
+        <asp:textbox ID="TxtProfPadre" cssclass="form-control"  runat="server"></asp:textbox>
+        <br />
+        <h3>Lugar de trabajo</h3>
+        <asp:textbox ID="TxtLugTrabPadre" cssclass="form-control" runat="server"></asp:textbox>
+         <br />
+        <h3>Telefono del trabajo:</h3>
+        <asp:textbox ID="TxtTelTrabPadre" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <br />
+        <br />
+        <h3>Estado civil de los padres:</h3>
+        <asp:radiobuttonlist ID="RblStadCivil" runat="server">
+            <asp:ListItem> Matrimonio Eclesial</asp:ListItem>
+            <asp:ListItem> Casados solo civil</asp:ListItem>
+            <asp:ListItem> Divorciados</asp:ListItem>
+            <asp:ListItem> Separados</asp:ListItem>
+            <asp:ListItem> Viuda/o</asp:ListItem>
+            <asp:ListItem> Madre soltera</asp:ListItem>
+            <asp:ListItem> Padre soltero</asp:ListItem>
+            <asp:ListItem> Acompañados</asp:ListItem>
+        </asp:radiobuttonlist>
+        <br />
+        <h3>El niño vive con:</h3>
+        <asp:radiobuttonlist ID="RblVivecon" runat="server" OnSelectedIndexChanged="RblVivecon_SelectedIndexChanged" AutoPostBack="True">
+            <asp:ListItem>Ambos padres</asp:ListItem>
+            <asp:ListItem>Solo papá</asp:ListItem>
+            <asp:ListItem>Solo mamá</asp:ListItem>
+            <asp:ListItem>Con abuelos</asp:ListItem>
+            <asp:ListItem>Otros</asp:ListItem>
+        </asp:radiobuttonlist>
+        <asp:panel ID="PanelOtros" visible="false" runat="server">
+
+            <h3>Escriba con quien:</h3>
+        <asp:TextBox ID="TxtViveCon" cssclass="form-control" runat="server"></asp:TextBox>
+        </asp:panel>
+        <br />
+        <h3>¿Posee alguna discapacidad fisica?</h3>
+        <asp:dropdownlist ID="DdlDiscp" cssclass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="Unnamed1_SelectedIndexChanged">
+            <asp:ListItem></asp:ListItem>
+            <asp:ListItem>Si</asp:ListItem>
+            <asp:ListItem>No</asp:ListItem>
+            
+        </asp:dropdownlist>
+
+        <asp:panel ID="PanelDisc" visible="false" runat="server">
+            <br />
+            <h3>¿Cual es?</h3>
+        <asp:TextBox ID="TxtDisc" cssclass="form-control" runat="server"></asp:TextBox>
+        </asp:panel>
+        <br />
+        <h3>¿El alumno repite grado?</h3>
+        <asp:dropdownlist ID="DdlAlumRep" cssclass="form-control" runat="server">
+            <asp:ListItem></asp:ListItem>
+            <asp:ListItem>Si</asp:ListItem>
+            <asp:ListItem>No</asp:ListItem>
+        </asp:dropdownlist>
+        <br />
+        <h3>¿Tiene las vacunas completas?</h3>
+        <asp:dropdownlist ID="DdlAlumVacunas" cssclass="form-control" runat="server">
+            <asp:ListItem></asp:ListItem>
+            <asp:ListItem>Si</asp:ListItem>
+            <asp:ListItem>No</asp:ListItem>
+        </asp:dropdownlist>
+        <br />
+        <h3>Problemas de salud que padece:</h3>
+        <asp:textbox ID="TxtProbSalud" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <h3>¿Recibe educación especial?</h3>
+        <asp:dropdownlist ID="DdlSpecial" cssclass="form-control" runat="server">
+            <asp:ListItem></asp:ListItem>
+            <asp:ListItem>Si</asp:ListItem>
+            <asp:ListItem>No</asp:ListItem>
+        </asp:dropdownlist>
+        <br />
+        <h3>¿El alumno recibe algun trabajo remunerado?</h3>
+        <asp:dropdownlist ID="DdlTrabAlum" cssclass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DdlTrabAlum_SelectedIndexChanged">
+            <asp:ListItem></asp:ListItem>
+            <asp:ListItem>Si</asp:ListItem>
+            <asp:ListItem>No</asp:ListItem>
+        </asp:dropdownlist>
+        <br />
+        <asp:panel ID="PanelTrabajo" visible="false" runat="server">
+
+            <h3>¿Cual es?</h3>
+        <asp:TextBox ID="TxtTrabAlum" cssclass="form-control" runat="server"></asp:TextBox>
+            <br />
+        </asp:panel>
+        <br />
+        <br />
+        <h2>Personas responsables del rendimiento escolar dell de la niño/a y que lo/a pueden RETIRAR de la escuela.</h2>
+        <br />
+        <h2>Primer responsable:</h2>
+        <br />
+        <h3>Nombre:</h3>
+        <asp:textbox ID="TxtNomResponsable" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <h3>DUI:</h3>
+        <asp:textbox ID="TxtDUIResponsable" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <h3>Telefono:</h3>
+        <asp:textbox ID="TxtTelResponsable" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+ 
+        <h3>Celular:</h3>
+        <asp:textbox ID="TxtCelularResponsable" runat="server"></asp:textbox>
+        <br />
+               <h2>Segundo Responsable:</h2>
+        <br />
+         <h3>Nombre:</h3>
+        <asp:textbox ID="TxtNomResponsable1" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <h3>DUI:</h3>
+        <asp:textbox ID="TxtDUIResponsable1" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <h3>Telefono:</h3>
+        <asp:textbox ID="TxtTelResponsable1" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <h3>Celular:</h3>
+        <asp:textbox ID="TxtCelularResponsable1" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <br />
+        <asp:button ID="Cancelar" cssclass="form-control" runat="server" text="Cancelar" />
+        <asp:button ID="Aceptar" runat="server" cssclass="form-control" text="Aceptar" />
+        <script>
         window.onload=function(){
         var pos=window.name || 0;
         window.scrollTo(0,pos);

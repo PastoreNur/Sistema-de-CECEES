@@ -103,4 +103,41 @@ public partial class Matricula : System.Web.UI.Page
             PanelHermanos.Visible = false;
         }
     }
+
+    protected void RblVivecon_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (RblVivecon.Text == "Otros")
+        {
+            PanelOtros.Visible = true;
+        }
+        else
+        {
+            PanelOtros.Visible = false;
+
+        }
+    }
+
+    protected void Unnamed1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DdlDiscp.Text == "Si")
+        {
+            PanelDisc.Visible = true;
+        }
+        else
+        {
+            PanelDisc.Visible = false;
+        }
+    }
+
+    protected void DdlTrabAlum_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DdlTrabAlum.Text == "Si")
+        {
+            PanelTrabajo.Visible = true;
+        }
+        else
+        {
+            PanelTrabajo.Visible = false;
+        }
+    }
 }
