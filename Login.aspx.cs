@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.OleDb;
+using System.Data;
+using System.Data.SqlClient;
 
 public partial class Login : System.Web.UI.Page
 {
@@ -13,20 +14,19 @@ public partial class Login : System.Web.UI.Page
        
     }
 
-    private string usuario = "admin";
-    private string contra = "1234";
+   
 
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        OleDbConnection conexion = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\josue\OneDrive\Documents\GitHub\Sistema-de-CECEES\App_Data\sistema_cecees.accdb;Persist Security Info=True");
+        SqlConnection conexion = new SqlConnection(@"Data Source = sql5019.smarterasp.net; Persist Security Info = True; User ID = DB_A132F9_SistemaCecees_admin; Password = sistema1234");
 
         conexion.Open();
 
-        string consulta = "SELECT user_name, password from usuarios WHERE user_name='"+TextBox1.Text+"'AND password='"+TextBox2.Text+"';";
-        OleDbCommand Ejecutar_Consulta = new OleDbCommand(consulta,conexion);
+        string consulta = "SELECT user_name, password from usuarios WHERE user_name='"+txtUsuario.Text+"'AND password='"+txtPassword.Text+"';";
+        SqlCommand Ejecutar_Consulta = new SqlCommand(consulta,conexion);
 
-        OleDbDataReader LectorDatos = Ejecutar_Consulta.ExecuteReader();
+        SqlDataReader LectorDatos = Ejecutar_Consulta.ExecuteReader();
 
         Boolean Validar_Usuario = LectorDatos.HasRows;
 
@@ -34,19 +34,20 @@ public partial class Login : System.Web.UI.Page
         {
             if (Validar_Usuario)
             {
-                this.Page.Response.Write("<script language='JavaScript'>window.alert('Ha iniciado Sesión');</script>");
-                System.Diagnostics.Process.Start("http://www.Google.com");
+                Response.Redirect("default.aspx");
                 conexion.Close();
                 
             }
             else
             {
-                this.Page.Response.Write("<script language='JavaScript'>window.alert('Usuario o Contaseña incorrecta');</script>");
+                string script = "alert('¡Usuario o Contraseña incorrecto!');";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", script, true);
             }
         }
         catch
         {
-            this.Page.Response.Write("<script language='JavaScript'>window.alert('Error');</script>");
+            string script = "alert('¡ERROR!');";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", script, true);
         }
     }
 }
