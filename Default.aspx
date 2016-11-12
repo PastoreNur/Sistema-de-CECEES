@@ -7,3 +7,10 @@
     <h1>¡Bienvenido!</h1>
 </asp:Content>
 
+<asp:Content ID="Content3" ContentPlaceHolderID="CerrarSesion" Runat="Server">
+    
+    <asp:Button ID="Sesion" runat="server" Text="Iniciar Sesión" CssClass="btn btn-defaul btn-lg" OnClick="Sesion_Click"/>
+    
+
+</asp:Content>
+

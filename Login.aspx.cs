@@ -11,7 +11,17 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+
+        try
+        {
+            string sesion = Session["user"].ToString();
+            Response.Redirect("default.aspx?Active="+sesion);
+        }
+        catch(Exception x)
+        {
+            
+        }
+
     }
 
    
@@ -34,9 +44,9 @@ public partial class Login : System.Web.UI.Page
         {
             if (Validar_Usuario)
             {
+                Session["user"] = txtUsuario.Text;
                 Response.Redirect("default.aspx");
-                conexion.Close();
-                
+                conexion.Close(); 
             }
             else
             {
