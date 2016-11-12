@@ -11,24 +11,31 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        if (Request.Params["Active"] != null)
+        try
         {
-            string denied = Request.Params["Active"];
-
-            if (denied == Session["user"].ToString())
+            if (Request.Params["Active"] != null)
             {
-                string script = "alert('¡Ya ha iniciado sesión!');";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+                string denied = Request.Params["Active"];
+
+                if (denied == Session["user"].ToString())
+                {
+                    string script = "alert('¡Ya ha iniciado sesión!');";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+                }
             }
         }
+        catch(Exception ex)
+        {
+
+        }
+        
 
         try
         {
             string usuario = Session["user"].ToString();
             Sesion.Text = "Cerrar Sesión";
             SesionActive = true;
-            
+
         }
         catch(Exception x)
         {
