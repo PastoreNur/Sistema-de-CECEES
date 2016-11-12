@@ -96,11 +96,23 @@
     </asp:DropDownList>
     <br />
     <h3>¿Tiene hermanos estudiando aqui?</h3>
-    <asp:DropDownList ID="DdlHermanos" CssClass="form-control" runat="server">
+    <asp:DropDownList ID="DdlHermanos" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DdlHermanos_SelectedIndexChanged1">
         <asp:ListItem></asp:ListItem>
         <asp:ListItem>Si</asp:ListItem>
         <asp:ListItem>No</asp:ListItem>
     </asp:DropDownList>
+
+        <asp:panel ID="PanelHermanos" visible="false" runat="server">
+
+        <h3>¿Cuantos?</h3>
+    <asp:TextBox ID="TxtHermNum" cssclass="form-control"  placeholder="Cantidad de hermanos" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="Enviar" cssclass="form-control" runat="server" Text="Aceptar" OnClick="Enviar_Click"></asp:Button>
+        <br />
+
+    </asp:panel>
+    <br />
+    <br />
    
   <script>
         window.onload=function(){
