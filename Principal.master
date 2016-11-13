@@ -44,13 +44,26 @@
                 <li><a href="#">Acerca de</a></li>
                   <li><a href="">Contacto </a></li>
               </ul>
-              
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                     <asp:ContentPlaceHolder id="CerrarSesion" runat="server">
-        
+                   
+                    <ul class="nav navbar-nav navbar-right">  
+                    <li class="dropdown"> 
+                    <asp:ContentPlaceHolder id="NomUsuario" runat="server">
                     </asp:ContentPlaceHolder>
-                </li>
+                 
+                    <ul class="dropdown-menu">
+                        <li><a><asp:ContentPlaceHolder id="Panel" runat="server">
+                    </asp:ContentPlaceHolder></a></li>
+                        <li><a><asp:ContentPlaceHolder id="btncerrar" runat="server">
+                    </asp:ContentPlaceHolder></a></li>
+                    </ul>
+                 </li>
+                  <li>
+                      <asp:ContentPlaceHolder id="CerrarSesion" runat="server">
+        
+                      </asp:ContentPlaceHolder>  
+                  </li>
+                 
+                 
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
