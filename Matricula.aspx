@@ -109,7 +109,7 @@
         <br />
         <asp:Button ID="Enviar" cssclass="form-control" runat="server" Text="Aceptar" OnClick="Enviar_Click"></asp:Button>
         <br />
-
+            <asp:Button ID="BtnAceptarHerm" CssClass="form-control" Visible="false" runat="server" Text="Aceptar" />
     </asp:panel>
     <br />
     <br />
@@ -163,6 +163,8 @@
             <asp:ListItem>Con abuelos</asp:ListItem>
             <asp:ListItem>Otros</asp:ListItem>
         </asp:radiobuttonlist>
+        
+       
         <asp:panel ID="PanelOtros" visible="false" runat="server">
 
             <h3>Escriba con quien:</h3>
@@ -207,7 +209,7 @@
             <asp:ListItem>No</asp:ListItem>
         </asp:dropdownlist>
         <br />
-        <h3>¿El alumno recibe algun trabajo remunerado?</h3>
+        <h3>¿El alumno realiza algun trabajo remunerado?</h3>
         <asp:dropdownlist ID="DdlTrabAlum" cssclass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DdlTrabAlum_SelectedIndexChanged">
             <asp:ListItem></asp:ListItem>
             <asp:ListItem>Si</asp:ListItem>
@@ -255,7 +257,12 @@
         <br />
         <br />
         <asp:button ID="Cancelar" cssclass="form-control" runat="server" text="Cancelar" />
-        <asp:button ID="Aceptar" runat="server" cssclass="form-control" text="Aceptar" />
+        <asp:button ID="Aceptar" runat="server" cssclass="form-control" text="Aceptar" OnClick="Aceptar_Click" />
+
+
+
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
         <script>
         window.onload=function(){
         var pos=window.name || 0;
