@@ -51,7 +51,7 @@ public partial class Login : System.Web.UI.Page
 
         conexion.Open();
 
-        string consulta = "SELECT user_name, password, tipo_user, nombre_user from usuarios WHERE user_name='" + txtUsuario.Text+"'AND password='"+txtPassword.Text+"';";
+        string consulta = "SELECT cod_user, contra, tipo_user, nombre_user from usuarios WHERE cod_user='" + txtUsuario.Text+"'AND contra='"+txtPassword.Text+"';";
         SqlCommand Ejecutar_Consulta = new SqlCommand(consulta,conexion);
         SqlDataReader LectorDatos = Ejecutar_Consulta.ExecuteReader();
         Boolean Validar_Usuario = LectorDatos.HasRows;
@@ -61,7 +61,7 @@ public partial class Login : System.Web.UI.Page
             if (Validar_Usuario && LectorDatos.Read() == true)
             {
 
-                Session["user"] = LectorDatos["user_name"].ToString();
+                Session["user"] = LectorDatos["cod_user"].ToString();
                 Session["nombreUser"] = LectorDatos["nombre_user"].ToString();
                 Session["TypeUser"] = LectorDatos["tipo_user"].ToString();
                 Response.Redirect("default.aspx");

@@ -146,8 +146,9 @@ public partial class _Default : System.Web.UI.Page
         }
         catch(Exception ex)
         {
-            string script = "alert('Error');";
+            string script = "alert('¡Debe Iniciar Sesión!');";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+            
         }
     }
 

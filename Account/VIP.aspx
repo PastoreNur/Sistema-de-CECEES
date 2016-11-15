@@ -14,7 +14,7 @@
 
                     </div>
                     <div class="panel-body">
-        
+                        <asp:Button ID="BtnAdministrarALumnos" runat="server" Text="Administrar" class="btn btn-block btn-primary"/>
                     </div>
                 </div>
                </div>
@@ -26,7 +26,7 @@
 
                     </div>
                     <div class="panel-body">
-        
+                        <asp:Button ID="BtnAdministrarDocentes" runat="server" Text="Administrar" class="btn btn-block btn-primary"/>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
 
                     </div>
                     <div class="panel-body">
-                            
+                        <asp:Button ID="BtnAdministrarPersonal" runat="server" Text="Administrar" class="btn btn-block btn-primary"/>
                     </div>
                 </div>
          </div>
@@ -52,7 +52,7 @@
 
                     </div>
                     <div class="panel-body">
-        
+                          <asp:Button ID="BtnAdministrarNotas" runat="server" Text="Administrar" class="btn btn-block btn-primary"/>
                     </div>
                 </div>
                </div>
@@ -64,7 +64,7 @@
 
                     </div>
                     <div class="panel-body">
-        
+                         <asp:Button ID="BtnAdminsitarHorarios" runat="server" Text="Administrar" class="btn btn-block btn-primary"/>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
 
                     </div>
                     <div class="panel-body">
-                            
+                        <asp:Button ID="BtnAdministrarPagos" runat="server" Text="Administrar" class="btn btn-block btn-primary"/>
                     </div>
                 </div>
          </div>
@@ -96,12 +96,8 @@
                  </div>
                  <div class="panel-body">
                             
-                     <asp:Button ID="BtnUsuarios" runat="server" Text="Administrar Usuarios" class="btn btn-block"/>
-                      <asp:Button ID="Button1" runat="server" Text="Administrar Alumnos" class="btn btn-block"/>
-                     <asp:Button ID="Button2" runat="server" Text="Administrar Docentes" class="btn btn-block"/>
-                     <asp:Button ID="Button3" runat="server" Text="Administrar Personal" class="btn btn-block"/>
-                     <asp:Button ID="Button4" runat="server" Text="Administrar Enacragados" class="btn btn-block"/>
-                     <asp:Button ID="Button5" runat="server" Text="Administrar Tesoreros" class="btn btn-block"/>      
+                     <asp:Button ID="BtnUsuarios" runat="server" Text="Administrar Usuarios" class="btn btn-block" OnClick="BtnUsuarios_Click"/>
+     
                  </div>
             </div>
         </div>
@@ -121,7 +117,7 @@
  
 
                      
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <asp:Label ID="LblNomUser" runat="server" Text="Invitado"></asp:Label>
                           <span class="caret"></span></a>
                       

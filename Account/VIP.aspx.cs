@@ -69,7 +69,7 @@ public partial class Account_VIP : System.Web.UI.Page
         Session.Remove("nombreUser");
         Session.Remove("TypeUser");
         Sesion.Text = "Iniciar Sesión";
-        Response.Redirect("Default.aspx");
+        Response.Redirect("../default.aspx");
         LblNomUser.Text = "Invitado";
 
     }
@@ -136,5 +136,10 @@ public partial class Account_VIP : System.Web.UI.Page
             CerrarSesion();
         }
 
+    }
+
+    protected void BtnUsuarios_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("usuarios.aspx");
     }
 }
