@@ -49,17 +49,22 @@
                  </div>
             </div>
         </div>
-  
+        
 
    <div class="col-md-7">
        <div class="panel panel-primary">
-           <div class="panel-heading"><h3 class="panel-title">Administración de Usuarios</h3></div>
+           <div class="panel-heading"><h3 class="panel-title"><asp:Label ID="Label12" runat="server" Text="Registrar Usuario" ></asp:Label></h3>
+           </div>
            <div class="panel-body">
                <div class="form-group">
        <asp:Label ID="Label6" runat="server" Text="Código de Usuario" ></asp:Label>
     <asp:TextBox ID="txtCodUser" runat="server" class="form-control"></asp:TextBox>
+    
     </div>
-               
+           <div class="form-group">
+       <asp:Label ID="Label10" runat="server" Text="Nombre de Usuario" visible="false"></asp:Label>
+    <asp:TextBox ID="txtNombreUsuario" runat="server" class="form-control" Enabled="false" Visible="false"></asp:TextBox>
+    </div>     
      <div class="form-group">
        <asp:Label ID="Label7" runat="server" Text="Primer Nombre" ></asp:Label>
     <asp:TextBox ID="txtFirstName" runat="server" class="form-control"></asp:TextBox>
@@ -80,6 +85,12 @@
        <asp:Label ID="Label2" runat="server" Text="E-Mail" ></asp:Label>
     <asp:TextBox ID="txtEmail" runat="server" class="form-control"></asp:TextBox>
     </div>
+
+               <div class="form-group">
+       <asp:Label ID="Label11" runat="server" Text="Tipo de Usuario" Visible="false" Enabled="false"></asp:Label>
+    <asp:TextBox ID="txtTipoUserbx" runat="server" class="form-control" Visible="false" Enabled="false"></asp:TextBox>
+    </div>
+
      <div class="form-group">
        <asp:Label ID="Label3" runat="server" Text="Tipo de Usuario" ></asp:Label>
 
@@ -97,11 +108,17 @@
     <asp:TextBox ID="txtPassword" runat="server" class="form-control" TextMode="Password"></asp:TextBox>
     </div>
      
-    <asp:Button ID="guardar" runat="server" Text="Guardar" class="btn btn-primary" OnClick="guardar_Click"/>
-    <asp:Button ID="buscar" runat="server" Text="Buscar" class="btn btn-primary"/>
-     <asp:Button ID="actualizar" runat="server" Text="Actualizar" class="btn btn-primary"/>
-    <asp:Button ID="eliminar" runat="server" Text="Eliminar" class="btn btn-primary"/>
+    <asp:Button ID="guardar" runat="server" Text="Registrar" class="btn btn-primary btn-block" OnClick="guardar_Click"/>
+    <div class="row">
+        <div class="col-md-3"></div>
+      <div class="btn-group col-md-7">
+      <asp:Button ID="buscar" runat="server" Text="Buscar" class="btn btn-primary" OnClick="buscar_Click"/>
+     <asp:Button ID="actualizar" runat="server" Text="Actualizar" class="btn btn-primary" OnClick="actualizar_Click"/>
+    <asp:Button ID="eliminar" runat="server" Text="Eliminar" class="btn btn-primary" OnClick="eliminar_Click"/>
      </div>
+            
+
+           </div>
            </div>
        </div>
 
@@ -121,9 +138,10 @@
                  <div class="panel-body">
                             
                      <asp:Button ID="BtnUsuarios" runat="server" Text="Administrar Usuarios" class="btn btn-block"/>
-                     <asp:Button ID="Button5" runat="server" Text="Usuarios Registrados" class="btn btn-block" data-toggle="modal" data-target="#tabla"/>
-                     <asp:Label ID="Label5" runat="server" Text="Contraseña" data-toggle="modal" data-target="#tabla" CssClass="btn btn-block btn-primary" ></asp:Label>
-                     
+                     <asp:Label ID="Label5" runat="server" Text="Usuarios Registrados" data-toggle="modal" data-target="#tabla" CssClass="btn btn-block btn-primary" ></asp:Label>
+                     <asp:Button ID="BtnGuardarUser" runat="server" Text="Guardar Usuario" class="btn btn-block btn-primary" OnClick="BtnGuardarUser_Click"/>
+                     <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Usuario" class="btn btn-block btn-primary" OnClick="BtnBuscar_Click"/>
+
                  </div>
             </div>
         </div>
@@ -131,27 +149,33 @@
 
 
     <div class="modal fade" id="tabla" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">Usuarios registrados</h4>
       </div>
       <div class="modal-body">
           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [cod_user], [nombre_user], [correo], [tipo_user] FROM [usuarios]"></asp:SqlDataSource>
-          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableModelValidation="True">
+          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableModelValidation="True" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
+              <AlternatingRowStyle BackColor="White" />
               <Columns>
-                  <asp:BoundField DataField="cod_user" HeaderText="cod_user" SortExpression="cod_user" />
-                  <asp:BoundField DataField="nombre_user" HeaderText="nombre_user" SortExpression="nombre_user" />
-                  <asp:BoundField DataField="correo" HeaderText="correo" SortExpression="correo" />
-                  <asp:BoundField DataField="tipo_user" HeaderText="tipo_user" SortExpression="tipo_user" />
+                  <asp:BoundField DataField="cod_user" HeaderText="Código de Usuario" SortExpression="cod_user" />
+                  <asp:BoundField DataField="nombre_user" HeaderText="Nombre de Usuario" SortExpression="nombre_user" />
+                  <asp:BoundField DataField="correo" HeaderText="E-Mail" SortExpression="correo" />
+                  <asp:BoundField DataField="tipo_user" HeaderText="Tipo de Usuario" SortExpression="tipo_user" />
               </Columns>
+                     <EditRowStyle BackColor="#2461BF" />
+              <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+              <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+              <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+              <RowStyle BackColor="#EFF3FB" />
+              <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                      </asp:GridView>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

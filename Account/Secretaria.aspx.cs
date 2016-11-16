@@ -5,16 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-/// <summary>
-/// Descripción breve de utilidades
-/// </summary>
-public class utilidades
+public partial class Account_Secretaria : System.Web.UI.Page
 {
-    public utilidades()
+    protected void Page_Load(object sender, EventArgs e)
     {
-       
+
     }
-    
-    
-    
 }

@@ -33,11 +33,11 @@ public partial class _Default : System.Web.UI.Page
 
         try
         {
-            if (Request.Params["Active"] != null)
+            if (Request.Params["Denegate"] != null)
             {
-                string denied = Request.Params["Active"];
+                string denied = Request.Params["Denegate"];
 
-                if (denied == "off")
+                if (denied == "on")
                 {
                     string script = "alert('¡Acceso Denegado!');";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
