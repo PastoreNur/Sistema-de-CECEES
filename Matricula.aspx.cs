@@ -7,29 +7,14 @@ using System.Web.UI.WebControls;
 
 public partial class Matricula : System.Web.UI.Page
 {
-    string[] grados = new string[20];
     public int id = 0;
-
-
-    //Instancia para supuestamente guardar el valor
-    InformacionMatricula informaciondetodo = new InformacionMatricula();
-
+    int numero = 0;
+    string grado1, grado2, grado3, grado4, grado5, grado6, grado7, grado8, grado9, grado10, grado11, grado12, grado13, grado14, grado15, grado16, grado17, grado18, grado19, grado20;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Esa label esta al final es para probar el valor con el que regresa
-        Label1.Text = Convert.ToString(informaciondetodo.Leer());
-
-        //Esa es la comparacion entre la variable guardada en la otra clase, es para que cuando haya cambios en ese valor haga desde aca la generacion
-        if (informaciondetodo.Leer() != 0)
-        {
-            //El metodo que genera los controles con la variable supuestamente guardada
-            Agregarcontroles(informaciondetodo.Leer());
-        }
-        else
-        {
-
-        }
+        
+        
     }
     protected void Unnamed1_TextChanged(object sender, EventArgs e)
     {
@@ -55,44 +40,134 @@ public partial class Matricula : System.Web.UI.Page
 
     protected override void LoadViewState(object savedState)
     {
-        base.LoadViewState(savedState);
-        if (ViewState["controsladded"] == null)
-            Agregarcontroles(informaciondetodo.Leer());
+     
     }
+    //
+    //
+
+
+
 
     List<TextBox> milista = new List<TextBox>();
-
-
+    
+    
+    
+    
+    
+    //
+    //
     //Este el metodo de generacion de controles
-    public void Agregarcontroles(double controles)
+    public void Agregarcontroles()
     {
-        
-        PanelHermanos.Controls.Add(new LiteralControl("<p>En las siguientes casillas escriba el numero del grado a los que los hermanos del alumno asisten.</p>"));
-        PanelHermanos.Controls.Add(new LiteralControl("<p>Ejemplo: Si uno de ellos asiste a tercero escriba 3, Y si asiste a primer año de bachillerato escriba b1 </p>"));
 
 
-        //este for no corre por la falta del valor de la variable
-        //Solo corre cuando le das click al boton que es antes de perder el valor
-        //Por eso es que si le das otro click a cualquier otro boton los elementos desaparecen
-        for (int i = 1; i <= informaciondetodo.Leer(); i++)
+
+        Label2.Visible = true;
+        Label3.Visible = true;
+
+        if (Convert.ToInt16(TxtHermNum.Text) > 0)
         {
-            TextBox dynamictextbox = new TextBox();
+            LblGrado1.Visible = true;
+            TxtGrado1.Visible = true;
 
-            id++;
-            dynamictextbox.ID = "dynamictextbox" + id.ToString();
-            dynamictextbox.CssClass = "form-control";
-            PanelHermanos.Controls.Add(new LiteralControl("<h3>Grado " + id.ToString() + "</h3>"));
-            PanelHermanos.Controls.Add(dynamictextbox);
-            milista.Add(dynamictextbox);
-            PanelHermanos.Controls.Add(new LiteralControl("<BR>"));
-            PanelHermanos.Controls.Add(new LiteralControl("<BR>"));
-            ViewState["controlsadded"] = true;
+            if (Convert.ToInt16(TxtHermNum.Text) > 1)
+            {
+                LblGrado2.Visible = true;
+                TxtGrado2.Visible = true;
+                if (Convert.ToInt16(TxtHermNum.Text) > 2)
+                {
+                    LblGrado3.Visible = true;
+                    TxtGrado3.Visible = true;
+                    if (Convert.ToInt16(TxtHermNum.Text) > 3)
+                    {
+                        LblGrado4.Visible = true;
+                        TxtGrado4.Visible = true;
+                        if (Convert.ToInt16(TxtHermNum.Text) > 4)
+                        {
+                            LblGrado5.Visible = true;
+                            TxtGrado5.Visible = true;
+                            if (Convert.ToInt16(TxtHermNum.Text) > 5)
+                            {
+                                LblGrado6.Visible = true;
+                                TxtGrado6.Visible = true;
+                                if (Convert.ToInt16(TxtHermNum.Text) > 6)
+                                {
+                                    LblGrado7.Visible = true;
+                                    TxtGrado7.Visible = true;
+                                    if (Convert.ToInt16(TxtHermNum.Text) > 7)
+                                    {
+                                        LblGrado8.Visible = true;
+                                        TxtGrado8.Visible = true;
+                                        if (Convert.ToInt16(TxtHermNum.Text) > 8)
+                                        {
+                                            LblGrado9.Visible = true;
+                                            TxtGrado9.Visible = true;
+                                            if (Convert.ToInt16(TxtHermNum.Text) > 9)
+                                            {
+                                                LblGrado10.Visible = true;
+                                                TxtGrado10.Visible = true;
+                                                if (Convert.ToInt16(TxtHermNum.Text) > 10)
+                                                {
+                                                    LblGrado11.Visible = true;
+                                                    TxtGrado11.Visible = true;
+                                                    if (Convert.ToInt16(TxtHermNum.Text) > 11)
+                                                    {
+                                                        LblGrado12.Visible = true;
+                                                        TxtGrado12.Visible = true;
+                                                        if (Convert.ToInt16(TxtHermNum.Text) > 12)
+                                                        {
+                                                            LblGrado13.Visible = true;
+                                                            TxtGrado13.Visible = true;
+                                                            if (Convert.ToInt16(TxtHermNum.Text) > 13)
+                                                            {
+                                                                LblGrado14.Visible = true;
+                                                                TxtGrado14.Visible = true;
+                                                                if (Convert.ToInt16(TxtHermNum.Text) > 14)
+                                                                {
+                                                                    LblGrado15.Visible = true;
+                                                                    TxtGrado15.Visible = true;
+                                                                    if (Convert.ToInt16(TxtHermNum.Text) > 15)
+                                                                    {
+                                                                        LblGrado16.Visible = true;
+                                                                        TxtGrado16.Visible = true;
+                                                                        if (Convert.ToInt16(TxtHermNum.Text) > 16)
+                                                                        {
+                                                                            LblGrado17.Visible = true;
+                                                                            TxtGrado17.Visible = true;
 
+                                                                            if (Convert.ToInt16(TxtHermNum.Text) > 17)
+                                                                            {
+                                                                                LblGrado18.Visible = true;
+                                                                                TxtGrado18.Visible = true;
+                                                                                if (Convert.ToInt16(TxtHermNum.Text) > 18)
+                                                                                {
+                                                                                    LblGrado19.Visible = true;
+                                                                                    TxtGrado19.Visible = true;
+                                                                                    if (Convert.ToInt16(TxtHermNum.Text) > 19)
+                                                                                    {
+                                                                                        LblGrado20.Visible = true;
+                                                                                        TxtGrado20.Visible = true;
+                                                                                        
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-
-        BtnAceptarHerm.Visible = true;
-
-
 
     }
 
@@ -105,10 +180,11 @@ public partial class Matricula : System.Web.UI.Page
         //= y que en el load se corriera el metodo pero como la variable vuelve a 0 no lo hace
         //====================================================================================================================================================
 
-        informaciondetodo.temporales(Convert.ToDouble(TxtHermNum.Text));
+        numero = Convert.ToInt16(TxtHermNum.Text);
+        Label1.Text = Convert.ToString(numero);
 
         //  Label1.Text = numero.ToString();
-        if (informaciondetodo.Leer() > 20 & informaciondetodo.Leer() > 0)
+        if (numero > 20 & numero > 0)
         {
             Response.Write("<script>alert('Por favor ingrese solo numeros entre 1 y 20')</script>");
         }
@@ -116,12 +192,11 @@ public partial class Matricula : System.Web.UI.Page
         {
             Enviar.Visible = false;
         }
-        Agregarcontroles(informaciondetodo.Leer());
+        Agregarcontroles();
 
     }
 
-    //Esta instancia no me acuerdo para que era pero de seguro ya no sirve :v
-    TextBox tb = new TextBox();
+    
 
     protected void DdlHermanos_SelectedIndexChanged1(object sender, EventArgs e)
     {
@@ -255,16 +330,32 @@ public partial class Matricula : System.Web.UI.Page
 
         }
 
+        grado1 = TxtGrado1.Text;
+        grado2 = TxtGrado2.Text;
+        grado3 = TxtGrado3.Text;
+        grado4 = TxtGrado4.Text;
+        grado5 = TxtGrado5.Text;
+        grado6 = TxtGrado6.Text;
+        grado7 = TxtGrado7.Text;
+        grado8 = TxtGrado8.Text;
+        grado9 = TxtGrado9.Text;
+        grado10 = TxtGrado10.Text;
+        grado11 = TxtGrado11.Text;
+        grado12 = TxtGrado12.Text;
+        grado13 = TxtGrado13.Text;
+        grado14 = TxtGrado14.Text;
+        grado15 = TxtGrado15.Text;
+        grado16 = TxtGrado16.Text;
+        grado17 = TxtGrado17.Text;
+        grado18 = TxtGrado18.Text;
+        grado19 = TxtGrado19.Text;
+        grado20 = TxtGrado20.Text;
 
 
-        
 
-        for (int i = 0; i < milista.Count; i++)
-        {
-            TextBox Dinami = new TextBox();
-            grados[i] = Dinami.Text;
-            Label1.Text = "Hola" + Label1.Text + Dinami.Text + "\n";
-        }
+
+
+
 
 
         // InformacionMatricula pase = new InformacionMatricula();

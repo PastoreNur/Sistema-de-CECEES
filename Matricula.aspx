@@ -106,7 +106,63 @@
 
         <h3>¿Cuantos?</h3>
     <asp:TextBox ID="TxtHermNum" cssclass="form-control"  placeholder="Cantidad de hermanos" runat="server"></asp:TextBox>
-        <br />
+          
+            <asp:Label ID="Label2" runat="server" visible="false" Text="En las siguientes casillas escriba el numero del grado a los que los hermanos del alumno asisten."></asp:Label>
+            <br />
+            <asp:Label ID="Label3" runat="server" Visible="false" Text="Ejemplo: Si uno de ellos asiste a tercero escriba 3, Y si asiste a primer año de bachillerato escriba b1."></asp:Label>
+            <br />
+            <asp:Label ID="LblGrado1" cssclass="form-control" runat="server" Visible="false" Text="Grado 1"></asp:Label>
+            <asp:TextBox ID="TxtGrado1" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado2" cssclass="form-control" runat="server" Visible="false" Text="Grado 2"></asp:Label>
+            <asp:TextBox ID="TxtGrado2" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado3" cssclass="form-control" runat="server" Visible="false" Text="Grado 3"></asp:Label>
+            <asp:TextBox ID="TxtGrado3" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado4" cssclass="form-control" runat="server" Visible="false" Text="Grado 4"></asp:Label>
+            <asp:TextBox ID="TxtGrado4" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado5" cssclass="form-control" runat="server" Visible="false" Text="Grado 5"></asp:Label>
+            <asp:TextBox ID="TxtGrado5" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado6" cssclass="form-control" runat="server" Visible="false" Text="Grado 6"></asp:Label>
+            <asp:TextBox ID="TxtGrado6" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado7" cssclass="form-control" runat="server" Visible="false" Text="Grado 7"></asp:Label>
+            <asp:TextBox ID="TxtGrado7" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+      
+            <asp:Label ID="LblGrado8" cssclass="form-control" runat="server" Visible="false" Text="Grado 8"></asp:Label>
+         
+            
+            <asp:TextBox ID="TxtGrado8" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+        
+            <asp:Label ID="LblGrado9" cssclass="form-control" runat="server" Visible="false" Text="Grado 9"></asp:Label>
+
+            <asp:TextBox ID="TxtGrado9" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+          
+            <asp:Label ID="LblGrado10" cssclass="form-control" runat="server" Visible="false" Text="Grado 10"></asp:Label>
+                      <asp:TextBox ID="TxtGrado10" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado11" cssclass="form-control" runat="server" Visible="false" Text="Grado 11"></asp:Label>
+            <asp:TextBox ID="TxtGrado11" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado12" cssclass="form-control" runat="server" Visible="false" Text="Grado 12"></asp:Label>
+            <asp:TextBox ID="TxtGrado12" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado13" cssclass="form-control" runat="server" Visible="false" Text="Grado 13"></asp:Label>
+            <asp:TextBox ID="TxtGrado13" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado14" cssclass="form-control" runat="server" Visible="false" Text="Grado 14"></asp:Label>
+            <asp:TextBox ID="TxtGrado14" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            <asp:Label ID="LblGrado15" cssclass="form-control" runat="server" Visible="false" Text="Grado 15"></asp:Label>
+            <asp:TextBox ID="TxtGrado15" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+           
+            <asp:Label ID="LblGrado16" cssclass="form-control" runat="server" Visible="false" Text="Grado 16"></asp:Label>
+            <asp:TextBox ID="TxtGrado16" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            
+            <asp:Label ID="LblGrado17" cssclass="form-control" runat="server" Visible="false" Text="Grado 17"></asp:Label>
+            <asp:TextBox ID="TxtGrado17" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+           
+            <asp:Label ID="LblGrado18" cssclass="form-control" runat="server" Visible="false" Text="Grado 18"></asp:Label>
+            <asp:TextBox ID="TxtGrado18" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+           
+            <asp:Label ID="LblGrado19" cssclass="form-control" runat="server" Visible="false" Text="Grado 19"></asp:Label>
+            <asp:TextBox ID="TxtGrado19" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+            
+            <asp:Label ID="LblGrado20" cssclass="form-control" runat="server" Visible="false" Text="Grado 20"></asp:Label>
+            <asp:TextBox ID="TxtGrado20" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+           
         <asp:Button ID="Enviar" cssclass="form-control" runat="server" Text="Aceptar" OnClick="Enviar_Click"></asp:Button>
         <br />
             <asp:Button ID="BtnAceptarHerm" CssClass="form-control" Visible="false" runat="server" Text="Aceptar" />
