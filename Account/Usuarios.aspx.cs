@@ -245,7 +245,9 @@ public partial class Account_Usuarios : System.Web.UI.Page
 
                 
             }
-            
+
+
+            txtTipoUser.Items.Remove("VIP");
         }
         catch(Exception ex)
         {
@@ -371,6 +373,8 @@ public partial class Account_Usuarios : System.Web.UI.Page
                 txtPassword.Visible = false;
             }
 
+            txtTipoUser.Items.Remove("VIP");
+
         }
         catch (Exception)
         {
@@ -404,7 +408,9 @@ public partial class Account_Usuarios : System.Web.UI.Page
             bool guardarAcc = false;
             borrar(guardarAcc);
         }
-       
+
+        txtTipoUser.Items.Remove("VIP");
+
     }
 
     protected void eliminar_Click(object sender, EventArgs e)
@@ -414,6 +420,7 @@ public partial class Account_Usuarios : System.Web.UI.Page
         con.eliminar(query);
         bool guardarAcc = true;
         borrar(guardarAcc);
+        txtTipoUser.Items.Remove("VIP");
     }
 
     protected void BtnGuardarUser_Click(object sender, EventArgs e)

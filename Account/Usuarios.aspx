@@ -141,7 +141,7 @@
                      <asp:Label ID="Label5" runat="server" Text="Usuarios Registrados" data-toggle="modal" data-target="#tabla" CssClass="btn btn-block btn-primary" ></asp:Label>
                      <asp:Button ID="BtnGuardarUser" runat="server" Text="Guardar Usuario" class="btn btn-block btn-primary" OnClick="BtnGuardarUser_Click"/>
                      <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Usuario" class="btn btn-block btn-primary" OnClick="BtnBuscar_Click"/>
-
+                     
                  </div>
             </div>
         </div>
@@ -157,7 +157,7 @@
       </div>
       <div class="modal-body">
           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [cod_user], [nombre_user], [correo], [tipo_user] FROM [usuarios]"></asp:SqlDataSource>
-          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableModelValidation="True" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
+          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableModelValidation="True" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" AllowPaging="True">
               <AlternatingRowStyle BackColor="White" />
               <Columns>
                   <asp:BoundField DataField="cod_user" HeaderText="Código de Usuario" SortExpression="cod_user" />
