@@ -4,56 +4,34 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Data;
 
-public partial class _Default : System.Web.UI.Page
+public partial class Account_VIP : System.Web.UI.Page
 {
     public bool SesionActive;
-
     protected void Page_Load(object sender, EventArgs e)
     {
+        
+
         try
         {
-            if (Request.Params["Active"] != null)
+            string sesion = Session["TypeUser"].ToString();
+            if (sesion != "VIP")
             {
-                string denied = Request.Params["Active"];
-
-                if (denied == Session["user"].ToString())
-                {
-                    string script = "alert('¡Ya ha iniciado sesión!');";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
-                }
+                Response.Redirect("../default.aspx?Active=off");
             }
         }
-        catch(Exception ex)
+        catch (Exception x)
         {
-
+            Response.Redirect("../login.aspx?Active=off");
         }
+
+        
 
         try
         {
-            if (Request.Params["Denegate"] != null)
-            {
-                string denied = Request.Params["Denegate"];
+             
 
-                if (denied == "on")
-                {
-                    string script = "alert('¡Acceso Denegado!');";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-
-        }
-
-        try
-        {
-            
-
-            if(Session["user"] != null)
+            if (Session["user"] != null)
             {
                 Sesion.Text = "Cerrar Sesión";
                 SesionActive = true;
@@ -62,7 +40,7 @@ public partial class _Default : System.Web.UI.Page
                 BtnCerrarSesion.Enabled = true;
                 BtnCerrarSesion.Visible = true;
                 string username = Session["nombreUser"].ToString();
-                LblNomUser.Text = "¡Bienvenido "+username+"!";
+                LblNomUser.Text = "¡Bienvenido " + username + "!";
             }
             else
             {
@@ -78,13 +56,12 @@ public partial class _Default : System.Web.UI.Page
         }
         catch (Exception x)
         {
-            
-            
+
+
         }
 
     }
 
-    
 
     public void CerrarSesion()
     {
@@ -92,14 +69,15 @@ public partial class _Default : System.Web.UI.Page
         Session.Remove("nombreUser");
         Session.Remove("TypeUser");
         Sesion.Text = "Iniciar Sesión";
-        Response.Redirect("Default.aspx");
+        Response.Redirect("../default.aspx");
         LblNomUser.Text = "Invitado";
 
     }
 
+
     protected void Sesion_Click(object sender, EventArgs e)
     {
-        if(SesionActive)
+        if (SesionActive)
         {
             Sesion.Enabled = false;
             Sesion.Visible = false;
@@ -144,11 +122,10 @@ public partial class _Default : System.Web.UI.Page
                     break;
             }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            string script = "alert('¡Debe Iniciar Sesión!');";
+            string script = "alert('Error');";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
-            
         }
     }
 
@@ -159,5 +136,10 @@ public partial class _Default : System.Web.UI.Page
             CerrarSesion();
         }
 
+    }
+
+    protected void BtnUsuarios_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("usuarios.aspx");
     }
 }

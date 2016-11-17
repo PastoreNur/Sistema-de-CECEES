@@ -9,7 +9,14 @@ public partial class Verificacioncupo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
- 
+        try
+        {
+            string sesion = Session["user"].ToString();
+        }
+        catch (Exception x)
+        {
+            Response.Redirect("login.aspx?Active=off");
+        }
     }
 
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)

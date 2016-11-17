@@ -12,8 +12,9 @@ public class utilidades
 {
     public utilidades()
     {
-        //
-        // TODO: Agregar aquí la lógica del constructor
-        //
+       
     }
+    
+    
+    
 }

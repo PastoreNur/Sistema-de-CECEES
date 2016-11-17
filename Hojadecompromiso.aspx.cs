@@ -9,20 +9,27 @@ public partial class Hojadecompromiso : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        try
+        {
+            string sesion = Session["user"].ToString();
+        }
+        catch (Exception x)
+        {
+            Response.Redirect("login.aspx?Active=off");
+        }
     }
 
     protected void ChcBCompromiso_CheckedChanged(object sender, EventArgs e)
     {
 
-        if (ChcBCompromiso.Checked == true)
+        /*if (ChcBCompromiso.Checked == true)
         {
             BtnSigcompromiso.Enabled = true;
         }
         else
         {
             BtnSigcompromiso.Enabled = false;
-        }
+        }*/
         
     }
 }

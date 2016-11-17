@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Principal.master.cs" Inherits="Principal" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="PanelAdmin.master.cs" Inherits="Account_PanelAdmin" %>
 
 <!DOCTYPE html>
 
@@ -10,20 +10,23 @@
     
     <title>Complejo Educativo Católico EL Espiríritu Santo - CECEES</title>
 
-    <link href="Styles/MainCECEES.css" rel="stylesheet" type="text/css" />
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../Styles/MainCECEES.css" rel="stylesheet" type="text/css" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet"/>
 
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+
+
 <body>
     <form id="form1" runat="server">
-    <header class="cabecera">
+    
+
+        <header class="cabecera">
 
         <div class="container">
             <h1 class="Titulo">Compejo Educativo Católico el Espíritu Santo</h1>
         </div>
-
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -34,13 +37,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="Default.aspx">CECEES</a>
+              <a class="navbar-brand" href="../default.aspx">CECEES</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="Default.aspx">Inicio <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="../default.aspx">Inicio <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Acerca de</a></li>
                   <li><a href="">Contacto </a></li>
               </ul>
@@ -69,30 +72,27 @@
           </div><!-- /.container-fluid -->
         </nav>
     </header>
-
     
-        <div class="container">
         
-            <section class="main row">
 
-                    <div class="col-md-9 articulo-principal">
-                        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-                        </asp:ContentPlaceHolder>
-                    </div>
-
-                <aside class="col-md-3 aside">
-                    <h2>ASide</h2>
-                </aside>
-
-            </section>
-        
-    
-        </div>
-    </form>
-
+         <div class="container cuerpo">
+             <section class="row">
+                 <article class="col-md-9 articulo">
+                     <asp:ContentPlaceHolder id="principal" runat="server">
+                    </asp:ContentPlaceHolder>
+                 </article>
+                 <aside class="col-md-3 asidead">
+                     <asp:ContentPlaceHolder id="aside" runat="server">
+                    </asp:ContentPlaceHolder>
+                 </aside>
+             </section>
+                    
+         </div>
+      </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
 </body>
+
 </html>

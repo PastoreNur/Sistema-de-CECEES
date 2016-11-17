@@ -22,6 +22,24 @@ public partial class Login : System.Web.UI.Page
             
         }
 
+        try
+        {
+            if (Request.Params["Active"] != null)
+            {
+                string denied = Request.Params["Active"];
+
+                if (denied == "off")
+                {
+                    string script = "alert('¡Debe Iniciar Sesión!');";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+
     }
 
    
@@ -33,19 +51,21 @@ public partial class Login : System.Web.UI.Page
 
         conexion.Open();
 
-        string consulta = "SELECT user_name, password from usuarios WHERE user_name='"+txtUsuario.Text+"'AND password='"+txtPassword.Text+"';";
+        string consulta = "SELECT cod_user, contra, tipo_user, nombre_user from usuarios WHERE cod_user='" + txtUsuario.Text+"'AND contra='"+txtPassword.Text+"';";
         SqlCommand Ejecutar_Consulta = new SqlCommand(consulta,conexion);
-
         SqlDataReader LectorDatos = Ejecutar_Consulta.ExecuteReader();
-
         Boolean Validar_Usuario = LectorDatos.HasRows;
 
         try
         {
-            if (Validar_Usuario)
+            if (Validar_Usuario && LectorDatos.Read() == true)
             {
-                Session["user"] = txtUsuario.Text;
+
+                Session["user"] = LectorDatos["cod_user"].ToString();
+                Session["nombreUser"] = LectorDatos["nombre_user"].ToString();
+                Session["TypeUser"] = LectorDatos["tipo_user"].ToString();
                 Response.Redirect("default.aspx");
+                
                 conexion.Close(); 
             }
             else
