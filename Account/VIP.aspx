@@ -26,7 +26,7 @@
 
                     </div>
                     <div class="panel-body">
-                        <asp:Button ID="BtnAdministrarDocentes" runat="server" Text="Administrar" class="btn btn-block btn-primary"/>
+                        <asp:Button ID="BtnAdministrarDocentes" runat="server" Text="Administrar" class="btn btn-block btn-primary" OnClick="BtnAdministrarDocentes_Click"/>
                     </div>
                 </div>
             </div>

@@ -142,4 +142,9 @@ public partial class Account_VIP : System.Web.UI.Page
     {
         Response.Redirect("usuarios.aspx");
     }
+
+    protected void BtnAdministrarDocentes_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("admin/admindocentes.aspx");
+    }
 }
