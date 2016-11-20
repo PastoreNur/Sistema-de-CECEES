@@ -9,6 +9,7 @@ using MySql.Data.MySqlClient;
 /// </summary>
 public class conexion
 {
+
   
     public void conectar()
     {
@@ -37,8 +38,7 @@ public class conexion
    // SqlConnection con = new SqlConnection(@"Data Source = sql5019.smarterasp.net; Persist Security Info = True; User ID = DB_A132F9_SistemaCecees_admin; Password = sistema1234");
     //public SqlCommand consulta;
 
-
-
+        
     public void insert(string sql)
     {
         MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();

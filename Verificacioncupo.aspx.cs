@@ -4,11 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 public partial class Verificacioncupo : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        
+
         try
         {
             string sesion = Session["user"].ToString();
@@ -17,11 +23,95 @@ public partial class Verificacioncupo : System.Web.UI.Page
         {
             Response.Redirect("login.aspx?Active=off");
         }
+
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection con = new MySqlConnection(builder.ToString());
+
+        if (!IsPostBack)
+        {
+
+            try
+            {
+                con.Open();
+                MySqlCommand OrdenSqlSelect = new MySqlCommand("SELECT NUMERO_SEC FROM secciones", con );
+                MySqlDataAdapter da = new MySqlDataAdapter(OrdenSqlSelect.CommandText, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                this.DropDownList1.DataSource = ds;
+                this.DropDownList1.DataValueField = "NUMERO_SEC";
+                this.DropDownList1.DataTextField = "NUMERO_SEC";
+                this.DropDownList1.DataBind();
+                this.DropDownList1.Items.Insert(0,new ListItem("---Elija una opción---","0"));
+
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+        }
+
+        
     }
+
 
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
         BtnSigCupo.Enabled = true;
     }
 
+
+    protected void BtnSigCupo_Click(object sender, EventArgs e)
+    {
+
+
+        if (DropDownList1.Text == "---Elija una opción---")
+        {
+
+            string script = "Elija una opción por favor";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "Cupo:", script, true);
+
+
+        }
+        else
+        {
+
+
+
+            int comparacion;
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = "mysql5013.smarterasp.net";
+            builder.UserID = "a131fe_bd";
+            builder.Password = "prueba123";
+            builder.Database = "db_a131fe_bd";
+            MySqlConnection con = new MySqlConnection(builder.ToString());
+            con.Open();
+            string textoddl = DropDownList1.Text;
+            string query = "Select CUPO_SEC from secciones where NUMERO_SEC='" + textoddl + "';";
+            using (MySqlCommand cmd = new MySqlCommand(query, con))
+            {
+                MySqlDataReader leer = cmd.ExecuteReader();
+
+
+                leer.Read();
+                comparacion = Convert.ToInt32(leer["CUPO_SEC"]);
+            }
+
+
+            if (comparacion == 0)
+            {
+               
+            }
+            else
+            {
+                
+            }
+        }
+    }
 }

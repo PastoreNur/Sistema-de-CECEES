@@ -55,12 +55,15 @@ public partial class Login : System.Web.UI.Page
         builder.Database = "db_a131fe_bd";
         MySqlConnection conexion = new MySqlConnection(builder.ToString());
         conexion.Open();
+
         string consulta = "SELECT cod_user, contra, tipo_user, nombre_user from usuarios WHERE cod_user='" + txtUsuario.Text + "'AND contra='" + txtPassword.Text + "';";
 
         MySqlCommand Ejecutar_Consulta = new MySqlCommand(consulta,conexion);
 
-        //MySqlCommand Ejecutar_Consulta = conexion.CreateCommand();
         MySqlDataReader LectorDatos = Ejecutar_Consulta.ExecuteReader();
+
+
+
         //Esto de abajo y esto de arriba son lo mismo pero con otro servidor
 
         //SqlCommand Ejecutar_Consulta = new SqlCommand(consulta,conexion);
