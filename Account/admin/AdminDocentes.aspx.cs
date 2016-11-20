@@ -11,4 +11,9 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
     {
 
     }
+
+    protected void guardar_Click(object sender, EventArgs e)
+    {
+        
+    }
 }
