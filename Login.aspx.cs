@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 public partial class Login : System.Web.UI.Page
 {
@@ -47,14 +46,29 @@ public partial class Login : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        SqlConnection conexion = new SqlConnection(@"Data Source = sql5019.smarterasp.net; Persist Security Info = True; User ID = DB_A132F9_SistemaCecees_admin; Password = sistema1234");
+        // SqlConnection conexion = new SqlConnection(@"Data Source = sql5019.smarterasp.net; Persist Security Info = True; User ID = DB_A132F9_SistemaCecees_admin; Password = sistema1234");
 
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection conexion = new MySqlConnection(builder.ToString());
         conexion.Open();
+        string consulta = "SELECT cod_user, contra, tipo_user, nombre_user from usuarios WHERE cod_user='" + txtUsuario.Text + "'AND contra='" + txtPassword.Text + "';";
 
-        string consulta = "SELECT cod_user, contra, tipo_user, nombre_user from usuarios WHERE cod_user='" + txtUsuario.Text+"'AND contra='"+txtPassword.Text+"';";
-        SqlCommand Ejecutar_Consulta = new SqlCommand(consulta,conexion);
-        SqlDataReader LectorDatos = Ejecutar_Consulta.ExecuteReader();
+        MySqlCommand Ejecutar_Consulta = new MySqlCommand(consulta,conexion);
+
+        //MySqlCommand Ejecutar_Consulta = conexion.CreateCommand();
+        MySqlDataReader LectorDatos = Ejecutar_Consulta.ExecuteReader();
+        //Esto de abajo y esto de arriba son lo mismo pero con otro servidor
+
+        //SqlCommand Ejecutar_Consulta = new SqlCommand(consulta,conexion);
+        //SqlDataReader LectorDatos = Ejecutar_Consulta.ExecuteReader();
+
+     
         Boolean Validar_Usuario = LectorDatos.HasRows;
+
 
         try
         {

@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 public partial class Account_Usuarios : System.Web.UI.Page
 {
@@ -205,12 +204,26 @@ public partial class Account_Usuarios : System.Web.UI.Page
         try
         {
             string consulta;
-            SqlCommand query;
-            SqlConnection con = new SqlConnection("Data Source=sql5019.smarterasp.net;Persist Security Info=True;User ID=DB_A132F9_SistemaCecees_admin;Password=sistema1234");
+
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = "mysql5013.smarterasp.net";
+            builder.UserID = "a131fe_bd";
+            builder.Password = "prueba123";
+            builder.Database = "db_a131fe_bd";
+            MySqlConnection con = new MySqlConnection(builder.ToString());
+            MySqlCommand query;
+
+            consulta = "SELECT cod_user FROM usuarios WHERE cod_user='" + txtCodUser.Text + "'";
+
+            query = new MySqlCommand(consulta, con);
+
+            MySqlDataReader leer = query.ExecuteReader();
+
+            //SqlCommand query;
+            //SqlConnection con = new SqlConnection("Data Source=sql5019.smarterasp.net;Persist Security Info=True;User ID=DB_A132F9_SistemaCecees_admin;Password=sistema1234");
             con.Open();
-            consulta = "SELECT cod_user FROM usuarios WHERE cod_user='"+txtCodUser.Text+"'";
-            query = new SqlCommand(consulta, con);
-            SqlDataReader leer = query.ExecuteReader();
+            //query = new SqlCommand(consulta, con);
+            //SqlDataReader leer = query.ExecuteReader();
             bool validar = leer.HasRows;
 
            
@@ -344,11 +357,19 @@ public partial class Account_Usuarios : System.Web.UI.Page
         try
         {
 
-        SqlConnection con = new SqlConnection("Data Source=sql5019.smarterasp.net;Persist Security Info=True;User ID=DB_A132F9_SistemaCecees_admin;Password=sistema1234");
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = "mysql5013.smarterasp.net";
+            builder.UserID = "a131fe_bd";
+            builder.Password = "prueba123";
+            builder.Database = "db_a131fe_bd";
+            MySqlConnection con = new MySqlConnection(builder.ToString());
+            MySqlCommand cmd = con.CreateCommand();
+
+           // SqlConnection con = new SqlConnection("Data Source=sql5019.smarterasp.net;Persist Security Info=True;User ID=DB_A132F9_SistemaCecees_admin;Password=sistema1234");
             con.Open();
         string query = "SELECT * FROM usuarios WHERE cod_user='"+txtCodUser.Text+"'";
-        SqlCommand consulta = new SqlCommand(query,con);
-        SqlDataReader leer = consulta.ExecuteReader();
+        //SqlCommand consulta = new SqlCommand(query,con);
+        MySqlDataReader leer = cmd.ExecuteReader();
 
             if (leer.Read() == true)
             {

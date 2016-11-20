@@ -358,14 +358,13 @@ public partial class Matricula : System.Web.UI.Page
         grado20 = TxtGrado20.Text;
 
 
+        conexion informacion = new conexion();
+      //  informacion.insert("INSERT INTO alumnos_matricula values ('" + TxtNIE.Text +"','" +  +);
 
 
 
 
 
-
-        // InformacionMatricula pase = new InformacionMatricula();
-        //pase.informacion(TxtApellidosAlum.Text, TxtNombresAlum.Text, DdlGenero.Text,TxtNacimento.Text,edadalum,TxtLugardenac.Text,DdlZona.Text,TxtNacionalidad.Text,telcasa,celular,
-        //  TxtReligion.Text,bautismo,confirma,primeracom,DdlIngreso.Text,TxtInstproc.Text,grado,DdlParvularia.Text,DdlHermanos.Text,numhermanos);
+       
     }
 }

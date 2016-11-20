@@ -19,11 +19,20 @@
 
 
     <div class="form-registro">
-<h3>Apellidos del alumno:</h3>
-        <asp:TextBox ID="TxtApellidosAlum" CssClass="form-control" placeholder="Apellidos" runat="server"></asp:TextBox>
+        <h3>NIE:</h3>
+        <asp:TextBox ID="TxtNIE" CssClass="form-control" placeholder="NIE" runat="server"></asp:TextBox>
+        <br />
+<h3>Primer apellido del alumno:</h3>
+        <asp:TextBox ID="TxtApellidoAlum1" CssClass="form-control" placeholder="Apellidos" runat="server"></asp:TextBox>
     <br />
-    <h3>Nombres del alumno:</h3>
-    <asp:TextBox ID="TxtNombresAlum" CssClass="form-control" placeholder="Nombres" runat="server"></asp:TextBox>
+        <h3>Segundo apellido del alumno:</h3>
+        <asp:TextBox ID="TxtApellidoAlum2" CssClass="form-control" placeholder="Apellidos" runat="server"></asp:TextBox>
+    <br />
+    <h3>Primer nombre del alumno:</h3>
+    <asp:TextBox ID="TxtNombreAlum1" CssClass="form-control" placeholder="Nombres" runat="server"></asp:TextBox>
+    <br />
+        <h3>Segundo nombre del alumno:</h3>
+    <asp:TextBox ID="TxtNombreAlum2" CssClass="form-control" placeholder="Nombres" runat="server"></asp:TextBox>
     <br />
     <h3>Genero:</h3>
     <asp:DropDownList ID="DdlGenero" CssClass="form-control" runat="server">
