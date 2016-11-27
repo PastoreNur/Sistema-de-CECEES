@@ -211,17 +211,16 @@ public partial class Account_Usuarios : System.Web.UI.Page
             builder.Password = "prueba123";
             builder.Database = "db_a131fe_bd";
             MySqlConnection con = new MySqlConnection(builder.ToString());
-            MySqlCommand query;
+            MySqlCommand query = con.CreateCommand();
 
+            con.Open();
             consulta = "SELECT cod_user FROM usuarios WHERE cod_user='" + txtCodUser.Text + "'";
-
-            query = new MySqlCommand(consulta, con);
-
+            query.CommandText = consulta;
             MySqlDataReader leer = query.ExecuteReader();
 
             //SqlCommand query;
             //SqlConnection con = new SqlConnection("Data Source=sql5019.smarterasp.net;Persist Security Info=True;User ID=DB_A132F9_SistemaCecees_admin;Password=sistema1234");
-            con.Open();
+           
             //query = new SqlCommand(consulta, con);
             //SqlDataReader leer = query.ExecuteReader();
             bool validar = leer.HasRows;
@@ -243,7 +242,7 @@ public partial class Account_Usuarios : System.Web.UI.Page
                 }
                 else
                 {
-                    string sql = "INSERT INTO usuarios values ('" + txtCodUser.Text + "','" + txtPassword.Text + "','" + txtFirstName.Text + " " + txtFirstLastName.Text +
+                    string sql = "INSERT INTO usuarios (ID_USUARIO, cod_user, contra, nombre_user, correo, tipo_user, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido) values ('"+txtCodUser.Text+"','" + txtCodUser.Text + "','" + txtPassword.Text + "','" + txtFirstName.Text + " " + txtFirstLastName.Text +
                 "','" + txtEmail.Text + "', '" + txtTipoUser.Text + "','" + txtFirstName.Text + "', '" + txtSecondName.Text + "', '" + txtFirstLastName.Text +
                 "', '" + txtSecondLastName.Text + "');";
 
@@ -353,7 +352,7 @@ public partial class Account_Usuarios : System.Web.UI.Page
 
     protected void buscar_Click(object sender, EventArgs e)
     {
-       
+
         try
         {
 
@@ -365,11 +364,12 @@ public partial class Account_Usuarios : System.Web.UI.Page
             MySqlConnection con = new MySqlConnection(builder.ToString());
             MySqlCommand cmd = con.CreateCommand();
 
-           // SqlConnection con = new SqlConnection("Data Source=sql5019.smarterasp.net;Persist Security Info=True;User ID=DB_A132F9_SistemaCecees_admin;Password=sistema1234");
+            // SqlConnection con = new SqlConnection("Data Source=sql5019.smarterasp.net;Persist Security Info=True;User ID=DB_A132F9_SistemaCecees_admin;Password=sistema1234");
             con.Open();
-        string query = "SELECT * FROM usuarios WHERE cod_user='"+txtCodUser.Text+"'";
-        //SqlCommand consulta = new SqlCommand(query,con);
-        MySqlDataReader leer = cmd.ExecuteReader();
+            string query = "SELECT * FROM usuarios WHERE cod_user='" + txtCodUser.Text + "'";
+            cmd.CommandText = query;
+            //SqlCommand consulta = new SqlCommand(query,con);
+            MySqlDataReader leer = cmd.ExecuteReader();
 
             if (leer.Read() == true)
             {
@@ -393,22 +393,28 @@ public partial class Account_Usuarios : System.Web.UI.Page
                 txtPassword.Enabled = false;
                 txtPassword.Visible = false;
             }
+            else
+            {
+                string script = "alert('¡El usuario " + txtCodUser.Text + " no existe!');";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+            }
 
             txtTipoUser.Items.Remove("VIP");
 
         }
         catch (Exception)
         {
-            string script = "alert('¡El usuario "+txtCodUser.Text+" no existe!');";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+            
         }
     }
+
+   
 
     protected void actualizar_Click(object sender, EventArgs e)
     {
         if (txtCodUser.Text == "" || txtEmail.Text=="" || txtFirstLastName.Text == ""|| txtFirstName.Text==""
             || txtSecondLastName.Text == ""|| txtSecondName.Text==""||
-            txtTipoUserbx.Text == ""|| txtNombreUsuario.Text=="")
+            txtTipoUserbx.Text == ""|| txtNombreUsuario.Text=="" )
         {
             string script = "alert('¡No puede dejar ningún campo vacío!');";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
@@ -442,6 +448,11 @@ public partial class Account_Usuarios : System.Web.UI.Page
         bool guardarAcc = true;
         borrar(guardarAcc);
         txtTipoUser.Items.Remove("VIP");
+        txtCodUser.Text = "";
+        txtTipoUserbx.Text = "";
+
+        string script = "alert('¡El usuario se eliminó correctamente!');";
+        ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
     }
 
     protected void BtnGuardarUser_Click(object sender, EventArgs e)
@@ -455,4 +466,8 @@ public partial class Account_Usuarios : System.Web.UI.Page
        
         Response.Redirect("usuarios.aspx?Action=buscar");
     }
+
+   
+
+   
 }

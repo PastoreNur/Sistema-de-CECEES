@@ -12,7 +12,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="NomUsuario" Runat="Server">
  
 
-                     
+    
                       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <asp:Label ID="LblNomUser" runat="server" Text="Invitado"></asp:Label>
                           <span class="caret"></span></a>
@@ -115,8 +115,8 @@
       <asp:Button ID="buscar" runat="server" Text="Buscar" class="btn btn-primary" OnClick="buscar_Click"/>
      <asp:Button ID="actualizar" runat="server" Text="Actualizar" class="btn btn-primary" OnClick="actualizar_Click"/>
     <asp:Button ID="eliminar" runat="server" Text="Eliminar" class="btn btn-primary" OnClick="eliminar_Click"/>
+         
      </div>
-            
 
            </div>
            </div>
@@ -139,7 +139,7 @@
                             
                      <asp:Button ID="BtnUsuarios" runat="server" Text="Administrar Usuarios" class="btn btn-block"/>
                      <asp:Label ID="Label5" runat="server" Text="Usuarios Registrados" data-toggle="modal" data-target="#tabla" CssClass="btn btn-block btn-primary" ></asp:Label>
-                     <asp:Button ID="BtnGuardarUser" runat="server" Text="Guardar Usuario" class="btn btn-block btn-primary" OnClick="BtnGuardarUser_Click"/>
+                     <asp:Button ID="BtnGuardarUser" runat="server" Text="Registrar Usuario" class="btn btn-block btn-primary" OnClick="BtnGuardarUser_Click"/>
                      <asp:Button ID="BtnBuscar" runat="server" Text="Buscar Usuario" class="btn btn-block btn-primary" OnClick="BtnBuscar_Click"/>
                      
                  </div>

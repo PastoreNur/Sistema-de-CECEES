@@ -48,8 +48,9 @@ public class conexion
         builder.Database = "db_a131fe_bd";
         MySqlConnection con = new MySqlConnection(builder.ToString());
         MySqlCommand cmd = con.CreateCommand();
-        con.Open();
 
+        con.Open();
+        cmd.CommandText = sql;
         int i = cmd.ExecuteNonQuery();
         if (i > 0)
         {
@@ -71,7 +72,7 @@ public class conexion
         MySqlConnection con = new MySqlConnection(builder.ToString());
         MySqlCommand cmd = con.CreateCommand();
         con.Open();
-      
+        cmd.CommandText = elimina;
         int i = cmd.ExecuteNonQuery();
         if (i > 0)
         {
@@ -94,6 +95,7 @@ public class conexion
         MySqlCommand cmd = con.CreateCommand();
         con.Open();
         string actualizar = " update " + tabla + " set " + campos + " where " + condicion;
+        cmd.CommandText = actualizar;
         int i = cmd.ExecuteNonQuery();
         con.Close();
         if (i > 0)
