@@ -5,16 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     
     <style>
-
         .articulo-principal {
     background-color:white;
         }
-
         .checkbox{
             padding-left: 25px;
         }
-
-
     </style>
 
 
@@ -23,6 +19,7 @@
         <asp:TextBox ID="TxtNIE" CssClass="form-control" placeholder="NIE" runat="server"></asp:TextBox>
         <br />
 <h3>Primer apellido del alumno:</h3>
+        
         <asp:TextBox ID="TxtApellidoAlum1" CssClass="form-control" placeholder="Apellidos" runat="server"></asp:TextBox>
     <br />
         <h3>Segundo apellido del alumno:</h3>
@@ -31,6 +28,7 @@
     <h3>Primer nombre del alumno:</h3>
     <asp:TextBox ID="TxtNombreAlum1" CssClass="form-control" placeholder="Nombres" runat="server"></asp:TextBox>
     <br />
+
         <h3>Segundo nombre del alumno:</h3>
     <asp:TextBox ID="TxtNombreAlum2" CssClass="form-control" placeholder="Nombres" runat="server"></asp:TextBox>
     <br />
@@ -56,6 +54,10 @@
         <asp:ListItem>Urbano</asp:ListItem>
         <asp:ListItem>Rural</asp:ListItem>
     </asp:DropDownList>
+        <br />
+        <h3>Dirección:</h3>
+    <asp:TextBox ID="TxtDireccion" cssclass="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
+    <br />
     <br />
     <h3>Nacionalidad:</h3>
     <asp:TextBox ID="TxtNacionalidad" cssclass="form-control" placeholder="Nacionalidad" runat="server"></asp:TextBox>
@@ -230,11 +232,6 @@
         </asp:radiobuttonlist>
         
        
-        <asp:panel ID="PanelOtros" visible="false" runat="server">
-
-            <h3>Escriba con quien:</h3>
-        <asp:TextBox ID="TxtViveCon" cssclass="form-control" runat="server"></asp:TextBox>
-        </asp:panel>
         <br />
         <h3>¿Posee alguna discapacidad fisica?</h3>
         <asp:dropdownlist ID="DdlDiscp" cssclass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="Unnamed1_SelectedIndexChanged">
@@ -293,8 +290,20 @@
         <br />
         <h2>Primer responsable:</h2>
         <br />
-        <h3>Nombre:</h3>
-        <asp:textbox ID="TxtNomResponsable" cssclass="form-control" runat="server"></asp:textbox>
+        <h3>Primer nombre:</h3>
+        <asp:textbox ID="TxtNom1Responsable" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <br />
+        <h3>Segundo nombre:</h3>
+        <asp:textbox ID="TxtNom2Responsable" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <br />
+        <h3>Primer apellido:</h3>
+        <asp:textbox ID="TxtApell1Responsable" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <br />
+        <h3>Segundo apellido:</h3>
+        <asp:textbox ID="TxtApell2Responsable" cssclass="form-control" runat="server"></asp:textbox>
         <br />
         <h3>DUI:</h3>
         <asp:textbox ID="TxtDUIResponsable" cssclass="form-control" runat="server"></asp:textbox>
@@ -308,8 +317,21 @@
         <br />
                <h2>Segundo Responsable:</h2>
         <br />
-         <h3>Nombre:</h3>
-        <asp:textbox ID="TxtNomResponsable1" cssclass="form-control" runat="server"></asp:textbox>
+         <br />
+        <h3>Primer nombre:</h3>
+        <asp:textbox ID="TxtNom1Responsable1" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <br />
+        <h3>Segundo nombre:</h3>
+        <asp:textbox ID="TxtNom2Responsable1" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <br />
+        <h3>Primer apellido:</h3>
+        <asp:textbox ID="TxtApell1Responsable1" cssclass="form-control" runat="server"></asp:textbox>
+        <br />
+        <br />
+        <h3>Segundo apellido:</h3>
+        <asp:textbox ID="TxtApell2Responsable1" cssclass="form-control" runat="server"></asp:textbox>
         <br />
         <h3>DUI:</h3>
         <asp:textbox ID="TxtDUIResponsable1" cssclass="form-control" runat="server"></asp:textbox>

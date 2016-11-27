@@ -62,6 +62,22 @@ public class conexion
         }
     }
 
+    public void insert2(string sql)
+    {
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection conn = new MySqlConnection(builder.ToString());
+        conn.Open();
+        //nel
+        MySqlCommand cmd = new MySqlCommand(sql, conn);
+        MySqlDataReader rdr = cmd.ExecuteReader();
+
+        rdr.Close();
+    }
+
     public bool eliminar(string elimina)
     {
         MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
