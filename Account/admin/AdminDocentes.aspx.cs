@@ -120,6 +120,9 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
 
                     string script = "alert('¡El docente se registró exitosamente!');";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+
+                    sql = "INSERT INTO usuarios (ID_USUARIO, cod_user, contra, nombre_user, tipo_user, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido) values ('" + txtNIP.Text + "','" + txtNIP.Text + "','" + txtNIP.Text + "','" + txtPrimerNombre.Text + " " + txtPrimerApellido.Text + "','Docente','" + txtPrimerNombre.Text + "','" + txtSegundoNombre.Text + "','" + txtPrimerApellido.Text + "','" + txtSegundoApellido.Text + "');";
+                    con2.insert(sql);
                     borrar();
                 }
             }
