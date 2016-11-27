@@ -306,9 +306,40 @@ public partial class Matricula : System.Web.UI.Page
         {
             confirma = "No";
         }
-        
-       
 
+
+        if (TxtCel.Text=="")
+        {
+            TxtCel.Text = "0";
+        }
+        else
+        {
+            try
+            {
+                int i = Convert.ToInt32(TxtCel.Text);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        if (TxtTelCasa.Text == "")
+        {
+            TxtTelCasa.Text = "0";
+        }
+        else
+        {
+            try
+            {
+                int i = Convert.ToInt32(TxtTelCasa.Text);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        //depuracion
         grado1 = TxtGrado1.Text;
         grado2 = TxtGrado2.Text;
         grado3 = TxtGrado3.Text;
@@ -341,12 +372,12 @@ public partial class Matricula : System.Web.UI.Page
             
         string superconsulta = insert + values + values2 + values3 + values4;
 
+        Label1.Text = superconsulta;
 
         conexion con2 = new conexion();
-        con2.insert(superconsulta);
+        con2.insert2(superconsulta);
 
 
-        Label1.Text = superconsulta;
 
 
 

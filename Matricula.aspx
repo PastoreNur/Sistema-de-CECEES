@@ -5,16 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     
     <style>
-
         .articulo-principal {
     background-color:white;
         }
-
         .checkbox{
             padding-left: 25px;
         }
-
-
     </style>
 
 
@@ -32,6 +28,7 @@
     <h3>Primer nombre del alumno:</h3>
     <asp:TextBox ID="TxtNombreAlum1" CssClass="form-control" placeholder="Nombres" runat="server"></asp:TextBox>
     <br />
+
         <h3>Segundo nombre del alumno:</h3>
     <asp:TextBox ID="TxtNombreAlum2" CssClass="form-control" placeholder="Nombres" runat="server"></asp:TextBox>
     <br />
