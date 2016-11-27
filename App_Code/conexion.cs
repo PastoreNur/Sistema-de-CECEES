@@ -9,8 +9,8 @@ using MySql.Data.MySqlClient;
 /// </summary>
 public class conexion
 {
+    public MySqlCommand consulta;
 
-  
     public void conectar()
     {
         MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -46,19 +46,13 @@ public class conexion
         builder.UserID = "a131fe_bd";
         builder.Password = "prueba123";
         builder.Database = "db_a131fe_bd";
-        MySqlConnection con = new MySqlConnection(builder.ToString());
-        MySqlCommand cmd = con.CreateCommand();
-        con.Open();
+        MySqlConnection conn = new MySqlConnection(builder.ToString());
+        conn.Open();
+        
+        MySqlCommand cmd = new MySqlCommand(sql, conn);
+        MySqlDataReader rdr = cmd.ExecuteReader();
 
-        int i = cmd.ExecuteNonQuery();
-        if (i > 0)
-        {
-
-        }
-        else
-        {
-
-        }
+        rdr.Close();
     }
 
     public bool eliminar(string elimina)

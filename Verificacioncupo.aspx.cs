@@ -9,11 +9,13 @@ using System.Data;
 
 public partial class Verificacioncupo : System.Web.UI.Page
 {
+    string textoddl;
+
+    
 
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        
 
         try
         {
@@ -54,6 +56,11 @@ public partial class Verificacioncupo : System.Web.UI.Page
 
                 throw;
             }
+
+        }
+        else
+        {
+           
             
         }
 
@@ -63,55 +70,106 @@ public partial class Verificacioncupo : System.Web.UI.Page
 
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        BtnSigCupo.Enabled = true;
-    }
+        int comparacion;
 
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection con = new MySqlConnection(builder.ToString());
 
-    protected void BtnSigCupo_Click(object sender, EventArgs e)
-    {
 
 
         if (DropDownList1.Text == "---Elija una opción---")
         {
 
-            string script = "Elija una opción por favor";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "Cupo:", script, true);
+            string script = "alert('Elija una opción por favor')";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "Cupo", script, true);
 
 
         }
         else
         {
 
+            BtnSigCupo.Enabled = true;
 
 
-            int comparacion;
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-            builder.Server = "mysql5013.smarterasp.net";
-            builder.UserID = "a131fe_bd";
-            builder.Password = "prueba123";
-            builder.Database = "db_a131fe_bd";
-            MySqlConnection con = new MySqlConnection(builder.ToString());
-            con.Open();
-            string textoddl = DropDownList1.Text;
-            string query = "Select CUPO_SEC from secciones where NUMERO_SEC='" + textoddl + "';";
-            using (MySqlCommand cmd = new MySqlCommand(query, con))
+
+            try
             {
-                MySqlDataReader leer = cmd.ExecuteReader();
+                con.Open();
+
+                    textoddl = DropDownList1.Text;
+
+                if (textoddl == "---Elija una opción---")
+                {
+                    string script = "alert('Elija una opción por favor')";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Cupo", script, true);
+                }
+                else
+                {
+
+                    string query = "Select CUPO_SEC from secciones where NUMERO_SEC='" + textoddl + "';";
+                    using (MySqlCommand cmd = new MySqlCommand(query, con))
+                    {
+                        MySqlDataReader leer = cmd.ExecuteReader();
 
 
-                leer.Read();
-                comparacion = Convert.ToInt32(leer["CUPO_SEC"]);
+                        leer.Read();
+
+                        try
+                        {
+                            comparacion = Convert.ToInt32(leer["CUPO_SEC"]);
+                            if (comparacion == 0)
+                            {
+                                Label1.Text = "Lo sentimos cupo agotado para la seccion seleccionada";
+                                BtnContinuar.Enabled = false;
+
+                            }
+                            else
+                            {
+                                Label1.Text = "El cupo actual es de " + Convert.ToString(comparacion);
+                                BtnContinuar.Enabled = true;
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+
+                            Label1.Text = "¡Seleccione una seccion de la lista!";
+                            BtnContinuar.Enabled = false;
+
+                        }
+
+
+                    }
+
+
+
+                }
             }
-
-
-            if (comparacion == 0)
+            catch (Exception)
             {
-               
+
+                Label1.Text = "¡Error vuelva a intentarlo mas tarde!";
             }
-            else
-            {
-                
-            }
+            
         }
+        }
+
+
+    protected void BtnSigCupo_Click(object sender, EventArgs e)
+    {
+        
+
+        
+    }
+
+    protected void BtnContinuar_Click(object sender, EventArgs e)
+    {
+        Session.Add("Grado", DropDownList1.Text);
+        Server.Transfer("Hojadecompromiso.aspx");
+        Response.Redirect("/Hojadecompromiso.aspx");
     }
 }

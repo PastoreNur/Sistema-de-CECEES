@@ -92,8 +92,9 @@ solvente antes de las evaluaciones trimestrales o de periodos.
     <span class="control-compromiso"></span>
    <asp:Button ID="BtnCancelarCompromiso" cssclass="form-control" runat="server" Text="Cancelar" />
     <span class="control-compromiso"></span>
-    <asp:Button ID="BtnSigcompromiso" cssclass="form-control" runat="server" Text="Siguiente" CausesValidation="False" Enabled="False" /></>
+    <asp:Button ID="BtnSigcompromiso" cssclass="form-control" runat="server" Text="Siguiente" CausesValidation="False" Enabled="False" OnClick="BtnSigcompromiso_Click" /></>
     </div>
+    
     <br />
     <br />
 </asp:Content>
