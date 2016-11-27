@@ -306,11 +306,6 @@ public partial class Matricula : System.Web.UI.Page
         {
             confirma = "No";
         }
-<<<<<<< HEAD
-        
-       
-=======
-
 
         if (TxtCel.Text=="")
         {
@@ -342,7 +337,6 @@ public partial class Matricula : System.Web.UI.Page
 
             }
         }
->>>>>>> Pastore
 
         //depuracion
         grado1 = TxtGrado1.Text;
@@ -376,22 +370,14 @@ public partial class Matricula : System.Web.UI.Page
             string values4 = TxtCelularResponsable.Text + "', '" + TxtNom1Responsable1.Text + "', '" + TxtNom2Responsable1.Text + "', '" + TxtApell1Responsable1.Text + "', '" + TxtApell2Responsable1.Text + "', '" + TxtDUIResponsable1.Text + "', '" + TxtTelResponsable1.Text + "', '" + TxtCelularResponsable1.Text + "');";
             
         string superconsulta = insert + values + values2 + values3 + values4;
-<<<<<<< HEAD
 
-=======
 
         Label1.Text = superconsulta;
 
         conexion con2 = new conexion();
         con2.insert2(superconsulta);
->>>>>>> Pastore
 
-        conexion con2 = new conexion();
-        con2.insert(superconsulta);
-
-
-        Label1.Text = superconsulta;
-
+       
 
 
     }
