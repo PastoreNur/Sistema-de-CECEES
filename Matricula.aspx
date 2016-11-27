@@ -313,7 +313,7 @@
         <br />
  
         <h3>Celular:</h3>
-        <asp:textbox ID="TxtCelularResponsable" runat="server"></asp:textbox>
+        <asp:textbox ID="TxtCelularResponsable" cssclass="form-control" runat="server"></asp:textbox>
         <br />
                <h2>Segundo Responsable:</h2>
         <br />
@@ -344,9 +344,30 @@
         <br />
         <br />
         <asp:button ID="Cancelar" cssclass="form-control" runat="server" text="Cancelar" />
-        <asp:button ID="Aceptar" runat="server" cssclass="form-control" text="Aceptar" OnClick="Aceptar_Click" />
 
+        <asp:Button ID="Verificar" runat="server" CssClass="form-control" Text="Verificar" OnClick="Verificar_Click" />
 
+        <asp:Label ID="BtnVer" CssClass="btn btn-danger form-control" runat="server" data-toggle="modal" data-target="#myModal" Visible="false" Text="Ver"></asp:Label>
+        <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <asp:Label ID="Label5" class="modal-title h4" runat="server" Text="Label"></asp:Label>
+      </div>
+      <div class="modal-body">
+          <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Atras</button>
+
+                  <asp:button ID="Aceptar" runat="server" class="btn btn-primary" text="Enviar" OnClick="Aceptar_Click" />
+
+      </div>
+    </div>
+  </div>
+</div>
 
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
