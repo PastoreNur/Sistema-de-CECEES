@@ -28,14 +28,7 @@ public partial class Account_grado : System.Web.UI.Page
         GradosRegistradosGV.DataBind();
         conn.Close();
 
-        try
-        {
-           
-        }
-        catch (Exception)
-        {
-
-        }
+        
 
     }
 
@@ -61,14 +54,16 @@ public partial class Account_grado : System.Web.UI.Page
                 {
                     DpdGrado.Items.Add(i.ToString());
                 }
-
+                cargarDocentes();
                 DpdGrado.Enabled = true;
                 break;
             case "Bachillerato":
                 DpdGrado.Items.Clear();
+                DpdGrado.Items.Insert(0, "");
                 DpdGrado.Items.Add("1");
                 DpdGrado.Items.Add("2");
                 DpdGrado.Enabled = true;
+                cargarDocentes();
                 break;
         }
 
@@ -121,6 +116,8 @@ public partial class Account_grado : System.Web.UI.Page
 
     protected void BtnRegistrar_Click(object sender, EventArgs e)
     {
+       // try { 
+
         string consulta;
 
         MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -132,7 +129,7 @@ public partial class Account_grado : System.Web.UI.Page
         MySqlCommand query = con.CreateCommand();
 
         con.Open();
-        consulta = "SELECT * FROM grado WHERE grado='" + DpdGrado.SelectedItem.Text + "' AND seccion='"+DpdSeccion.SelectedItem.Text+"' AND tipo_grado='"+DpdEducacion.SelectedItem.Text+"'; SELECT ID_DOCENTE FROM docentes WHERE nombre_completo_doc='"+DpdOrientador.SelectedItem.Text+"'";
+        consulta = "SELECT * FROM grado WHERE grado='" + DpdGrado.SelectedItem.Text + "' AND seccion='"+DpdSeccion.SelectedItem.Text+"' AND tipo_grado='"+DpdEducacion.SelectedItem.Text+"'";
         query.CommandText = consulta;
         MySqlDataReader leer = query.ExecuteReader();
 
@@ -156,6 +153,7 @@ public partial class Account_grado : System.Web.UI.Page
         }
         else
         {
+           
             if (txtHorasClase.Text == ""|| DpdEducacion.SelectedIndex == 0 || DpdGrado.SelectedIndex == 0|| DpdSeccion.SelectedIndex == 0||DpdOrientador.SelectedIndex==0)
             {
 
@@ -165,29 +163,59 @@ public partial class Account_grado : System.Web.UI.Page
             }
             else
             {
-                string sql = "INSERT INTO grado (horas_clase, grado, seccion, nombre_grado, id_orientador, tipo_grado) values ('" + txtHorasClase.Text + "','" + DpdGrado.SelectedItem.Text + "', '" + DpdSeccion.SelectedItem.Text+ "','" + txtNombreAbreviado.Text + "','" + txtPrimerApellido.Text + "','" + txtSegundoApellido.Text + "','" + txtEspecialidad.Text + "','" + txtTelefono.Text + "','" + txtDireccion.Text + "', '" + DpdEducacion.SelectedItem.Text + "', '" + DpdTurno.SelectedItem.Text + "');";
+                
+                consulta = "SELECT ID_DOCENTE FROM docentes WHERE nombre_completo_doc = '" + DpdOrientador.SelectedItem.Text + "'";
+                query.CommandText = consulta;
+                MySqlDataReader leer2 = query.ExecuteReader();
+
+                leer2.Read();
+
+                string sql = "INSERT INTO grado (horas_clase, grado, seccion, nombre_grado, id_orientador, tipo_grado) values ('" + txtHorasClase.Text + "','" + DpdGrado.SelectedItem.Text + "', '" + DpdSeccion.SelectedItem.Text+ "','" + txtNombreAbreviado.Text + "','" + leer2["ID_DOCENTE"].ToString() + "','" + DpdEducacion.SelectedItem.Text + "');";
                 conexion con2 = new conexion();
                 con2.insert(sql);
 
                 string script = "alert('¡El/la docente se registró exitosamente!');";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
 
-                sql = "INSERT INTO usuarios (ID_USUARIO, cod_user, contra, nombre_user, tipo_user, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido) values ('" + txtNIP.Text + "','" + txtNIP.Text + "','" + txtNIP.Text + "','" + txtPrimerNombre.Text + " " + txtPrimerApellido.Text + "','Docente','" + txtPrimerNombre.Text + "','" + txtSegundoNombre.Text + "','" + txtPrimerApellido.Text + "','" + txtSegundoApellido.Text + "');";
-                con2.insert(sql);
-                borrar();
+           
+                
             }
         }
 
     }
-        catch (Exception ex)
+       /* catch (Exception ex)
         {
             string script2 = "alert('¡El/la docente NO se registró!');";
     ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script2, true);
-        }
+        }*/
     }
 
     protected void Button4_Click(object sender, EventArgs e)
     {
 
     }
+
+    public void cargarDocentes()
+    {
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection conn = new MySqlConnection(builder.ToString());
+        conn.Open();
+        MySqlCommand OrdenSqlSelect = new MySqlCommand("SELECT nombre_completo_doc FROM docentes Where Tipo='"+DpdEducacion.SelectedItem.Text+"' OR Tipo='Basica y Bachillerato'", conn);
+        MySqlDataAdapter da = new MySqlDataAdapter(OrdenSqlSelect.CommandText, conn);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        this.DpdOrientador.DataSource = ds;
+        this.DpdOrientador.DataValueField = "nombre_completo_doc";
+        this.DpdOrientador.DataTextField = "nombre_completo_doc";
+        this.DpdOrientador.DataBind();
+        this.DpdOrientador.Items.Insert(0, new ListItem("---Elija una opción---", "0"));
+
+        conn.Close();
+    }
+
+
 }

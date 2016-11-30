@@ -111,8 +111,8 @@
                         </div>
                         <div class="col-md-6">
                             
-                                <asp:Button ID="BtnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-primary" />
-                                <asp:Button ID="Button4" runat="server" Text="Eliminar" CssClass="btn btn-danger" />
+                                <asp:Button ID="BtnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClick="BtnRegistrar_Click" />
+                                <asp:Button ID="Button4" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="Button4_Click" />
                                 
                             
                         </div>
