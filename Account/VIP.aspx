@@ -14,6 +14,7 @@
 
                     </div>
                     <div class="panel-body">
+                        <asp:Label ID="cantAlumnos" runat="server" Text="Label"></asp:Label>
                         <asp:Button ID="BtnAdministrarALumnos" runat="server" Text="Administrar" class="btn btn-block btn-primary"/>
                     </div>
                 </div>
@@ -26,6 +27,7 @@
 
                     </div>
                     <div class="panel-body">
+                        <asp:Label ID="cantDocentes" runat="server" Text="Label"></asp:Label>
                         <asp:Button ID="BtnAdministrarDocentes" runat="server" Text="Administrar" class="btn btn-block btn-primary" OnClick="BtnAdministrarDocentes_Click"/>
                     </div>
                 </div>
@@ -38,6 +40,7 @@
 
                     </div>
                     <div class="panel-body">
+                        <asp:Label ID="cantPersonal" runat="server" Text="Label"></asp:Label>
                         <asp:Button ID="BtnAdministrarPersonal" runat="server" Text="Administrar" class="btn btn-block btn-primary"/>
                     </div>
                 </div>

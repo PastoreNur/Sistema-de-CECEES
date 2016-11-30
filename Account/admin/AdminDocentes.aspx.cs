@@ -22,7 +22,7 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
             txtEspecialidad.Enabled = false;
             txtDireccion.Enabled = false;
             txtTelefono.Enabled = false;
-
+            
 
         try
         {
@@ -45,6 +45,10 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
                     BtnBuscar.Visible = false;
                     BtnActualizar.Visible = false;
                     BtnEliminar.Visible = false;
+                    lblturno.Visible = true;
+                    lbleducacion.Visible = true;
+                    DpdEducacion.Visible = true;
+                    DpdTurno.Visible = true;
                 }
                 else if (denied == "buscar")
                 {
@@ -53,6 +57,7 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
                     BtnBuscar.Visible = true;
                     BtnActualizar.Visible = true;
                     BtnEliminar.Visible = true;
+
 
                     
 
@@ -105,7 +110,7 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
             {
                 if (txtNIP.Text == "" || txtPrimerNombre.Text == "" || txtSegundoNombre.Text == "" ||
                txtPrimerApellido.Text == "" || txtSegundoApellido.Text == "" || txtEspecialidad.Text == "" ||
-               txtTelefono.Text == "" || txtDireccion.Text == "")
+               txtTelefono.Text == "" || txtDireccion.Text == "" || DpdEducacion.SelectedItem.Text == ""|| DpdTurno.SelectedItem.Text=="")
                 {
 
                     string script = "alert('¡No puede dejar campos vacíos!');";
@@ -114,11 +119,11 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
                 }
                 else
                 {
-                    string sql = "INSERT INTO docentes (ID_DOCENTE, NIP, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, especialidad, Telefono, direccion) values ('"+txtNIP.Text+ "','" + txtNIP.Text + "', '"+txtPrimerNombre.Text+"','"+txtSegundoNombre.Text+"','"+txtPrimerApellido.Text+"','"+txtSegundoApellido.Text+"','"+txtEspecialidad.Text+"','"+txtTelefono.Text+"','"+txtDireccion.Text+"');";
+                    string sql = "INSERT INTO docentes (ID_DOCENTE, NIP, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, especialidad, Telefono, direccion, Tipo, Turno, nombre_completo_doc) values ('"+txtNIP.Text+ "','" + txtNIP.Text + "', '"+txtPrimerNombre.Text+"','"+txtSegundoNombre.Text+"','"+txtPrimerApellido.Text+"','"+txtSegundoApellido.Text+"','"+txtEspecialidad.Text+"','"+txtTelefono.Text+"','"+txtDireccion.Text+"', '"+DpdEducacion.SelectedItem.Text+"', '"+DpdTurno.SelectedItem.Text+"', '"+txtPrimerNombre.Text+" "+txtSegundoNombre.Text+" "+txtPrimerApellido.Text+" "+txtSegundoApellido.Text+"');";
                     conexion con2 = new conexion();
                     con2.insert(sql);
 
-                    string script = "alert('¡El docente se registró exitosamente!');";
+                    string script = "alert('¡El/la docente se registró exitosamente!');";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
 
                     sql = "INSERT INTO usuarios (ID_USUARIO, cod_user, contra, nombre_user, tipo_user, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido) values ('" + txtNIP.Text + "','" + txtNIP.Text + "','" + txtNIP.Text + "','" + txtPrimerNombre.Text + " " + txtPrimerApellido.Text + "','Docente','" + txtPrimerNombre.Text + "','" + txtSegundoNombre.Text + "','" + txtPrimerApellido.Text + "','" + txtSegundoApellido.Text + "');";
@@ -130,7 +135,7 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            string script2 = "alert('¡El docente NO se registró!');";
+            string script2 = "alert('¡El/la docente NO se registró!');";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script2, true);
         }
     }
@@ -145,6 +150,8 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
         txtEspecialidad.Text = "";
         txtTelefono.Text = "";
         txtDireccion.Text = "";
+        DpdEducacion.SelectedIndex = 0;
+        DpdTurno.SelectedIndex = 0;
     }
 
 
@@ -206,7 +213,7 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
             }
             else
             {
-                string script = "alert('¡El docente " + txtNIP.Text + " no existe!');";
+                string script = "alert('¡El/la docente " + txtNIP.Text + " no existe!');";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
             }
 
@@ -260,7 +267,7 @@ public partial class Account_admin_AdminDocente : System.Web.UI.Page
         string apellido = txtSegundoApellido.Text;
         borrar();
 
-        string script = "alert('¡El Docente "+nombre+" "+apellido+" se eliminó correctamente!');";
+        string script = "alert('¡El/la Docente "+nombre+" "+apellido+" se eliminó correctamente!');";
         ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
         nombre = "";
         apellido = "";
