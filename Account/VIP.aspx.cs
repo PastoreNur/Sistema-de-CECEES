@@ -10,7 +10,12 @@ public partial class Account_VIP : System.Web.UI.Page
     public bool SesionActive;
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
+        conexion cant = new conexion();
+
+        cantDocentes.Text = cant.contarRegistros();
+        cantAlumnos.Text = cant.contarAlumons();
+        cantPersonal.Text = cant.contarPersonal();
 
         try
         {

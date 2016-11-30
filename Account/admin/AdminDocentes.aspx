@@ -77,7 +77,16 @@
                               <asp:TextBox ID="txtEspecialidad" runat="server" CssClass="form-control"></asp:TextBox>
                           </div>
                           
-                           
+                           <div class="form-group">
+                                <asp:Label ID="lbleducacion" runat="server" visible="false" Text="Educación"></asp:Label>
+                                <asp:DropDownList ID="DpdEducacion" runat="server" visible="false" CssClass="form-control">
+                                    <asp:ListItem Selected="True"></asp:ListItem>
+                                    <asp:ListItem>Basica</asp:ListItem>
+                                    <asp:ListItem>Bachillerato</asp:ListItem>
+                                    <asp:ListItem>Basica y Bachillerato</asp:ListItem>
+                                </asp:DropDownList>
+                          </div> 
+
                       </div>
 
                       <div class="col-md-6">
@@ -95,12 +104,31 @@
                               <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
                           </div>
 
+                           <div class="form-group">
+                                <asp:Label ID="lblturno" runat="server" visible="false" Text="Turno"></asp:Label>
+                                <asp:DropDownList ID="DpdTurno" Visible="false" runat="server" CssClass="form-control">
+                                    <asp:ListItem Selected="True"></asp:ListItem>
+                                    <asp:ListItem>Mañana</asp:ListItem>
+                                    <asp:ListItem>Tarde</asp:ListItem>
+                                    <asp:ListItem>Mañana y Tarde</asp:ListItem>
+                                </asp:DropDownList>
+                          </div>
+
                       </div>
                       
                       <div class="col-md-12"> 
                           <div class="form-group">
                               <asp:Label ID="Label10" runat="server" Text="Dirección"></asp:Label>
                               <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control"></asp:TextBox>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="col-md-6">
+
+                          </div>
+                          <div class="col-md-6">
+
                           </div>
                       </div>
 
@@ -118,9 +146,9 @@
                                       <div class="btn btn-group">
                                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click"/>
                                 
-                                      <asp:Button ID="BtnActualizar" runat="server" Text="Actualizar" CssClass="btn btn-primary" OnClick="BtnActualizar_Click"/>
+                                      <asp:Button ID="BtnActualizar" runat="server" Text="Actualizar" CssClass="btn btn-success" OnClick="BtnActualizar_Click"/>
                              
-                                      <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-primary" OnClick="BtnEliminar_Click"/>
+                                      <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="BtnEliminar_Click"/>
                                   
                                       </div>
                                      

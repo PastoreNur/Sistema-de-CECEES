@@ -125,4 +125,67 @@ public class conexion
     }
 
 
+    public string cantidadDocentes;
+    public string cantidadAlumnos;
+
+    public string contarRegistros()
+    {
+         MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection conn = new MySqlConnection(builder.ToString());
+        conn.Open();
+        //nel
+        MySqlCommand cmd = conn.CreateCommand();
+       
+
+        cmd.CommandText = "SELECT count(*) from docentes";
+
+        int i = Convert.ToInt32(cmd.ExecuteScalar());
+        return i.ToString();
+    }
+
+
+    public string contarAlumons()
+    {
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection conn = new MySqlConnection(builder.ToString());
+        conn.Open();
+        //nel
+        MySqlCommand cmd = conn.CreateCommand();
+
+
+        cmd.CommandText = "SELECT count(*) from alumnos";
+
+        int i = Convert.ToInt32(cmd.ExecuteScalar());
+        return i.ToString();
+    }
+
+    public string contarPersonal()
+    {
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection conn = new MySqlConnection(builder.ToString());
+        conn.Open();
+        //nel
+        MySqlCommand cmd = conn.CreateCommand();
+
+
+        cmd.CommandText = "SELECT count(*) from usuarios where tipo_user='Tesorero' OR tipo_user='Secretaria'";
+
+        int i = Convert.ToInt32(cmd.ExecuteScalar());
+        return i.ToString();
+    }
+
+
+
 }
