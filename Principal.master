@@ -82,7 +82,9 @@
                     </div>
 
                 <aside class="col-md-3 aside">
-                    <h2>ASide</h2>
+                    <asp:ContentPlaceHolder id="ContentAside" runat="server">
+        
+                        </asp:ContentPlaceHolder>
                 </aside>
 
             </section>

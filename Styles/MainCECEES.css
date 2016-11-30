@@ -11,16 +11,16 @@
 }
 
 .articulo-principal {
-    background-color:#95a5a6;
     margin-bottom: 15px;
     border-radius: 5px;
 }
 
 .aside {
-    background-color: #7f8c8d;
+    background: rgba(0,0,0,0.3);
     border-radius:5px;
     padding: 10px;
     margin:auto;
+    color:#000000;
 }
 
 .form-registro{

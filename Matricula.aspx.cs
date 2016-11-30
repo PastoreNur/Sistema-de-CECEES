@@ -17,8 +17,9 @@ public partial class Matricula : System.Web.UI.Page
     {
         gradoalum = (string)(Session["Grado"]);
 
+
         try
-       {
+        {
             string sesion = Session["user"].ToString();
                     }
                 catch (Exception x)
@@ -262,23 +263,61 @@ public partial class Matricula : System.Web.UI.Page
     // es aqui donde se depura todo y en el futuro sera donde se pase la informacion a la otra clase
     protected void Aceptar_Click(object sender, EventArgs e)
     {
+        string NIE = TxtNIE.Text;
+
         gradoalum = "ejemplo";
         DateTime thisDay = DateTime.Today;
         string fecha = (thisDay.ToString("d"));
-        string insert = "Insert into alumnospremat (NIT,ALUMNONOMBR1,ALUMNONOMBR2,ALUMNOAPELLI1,ALUMNOAPELLI2,GRADOSOLI,FECHASOL,GENERO,FECHANACIMIENTO,LUGNACIMIENTO,DIRECC,ZONARE,NACIONALI,TELCASA,CELULAR,RELIGION,BAUTIZ,PRIMCOMUN,CONFIRM,NUEVOING,INSTPROCE,GRADINGR,PARVULA,HERMAN,GRADHERMAN1,GRADHERMAN2,GRADHERMAN3,GRADHERMAN4,GRADHERMAN5,GRADHERMAN6,GRADHERMAN7,GRADHERMAN8,GRADHERMAN9,GRADHERMAN10,GRADHERMAN11,GRADHERMAN12,GRADHERMAN13,GRADHERMAN14,GRADHERMAN15,GRADHERMAN16,GRADHERMAN17,GRADHERMAN18,GRADHERMAN19,GRADHERMAN20,NOMMAD,PROFMAD,LUGTRABMAD,TELTRAB,NOMPAD,PROFPAD,LUGTRABPAD,TELTRABPAD,ESTADOCIV,VIVECON,DISCAP,CUALDISCAP,REPITENTE,VACUNASCOMPLE,PROBLEMASDESAL,EDUCESPECIAL,TRABREMUN,CUALTRAB,RESPON1NOM1,RESPON1NOM2,RESPON1APELL1,RESPON1APELL2,RESPON1DUI,RESPON1TEL,RESPON1CEL,RESPON2NOM1,RESPON2NOM2,RESPON2APELL1,RESPON2APELL2,RESPON2DUI,RESPON2TEL,RESPON2CEL)";
+        string insert = "Insert into alumnospremat (NIE,ALUMNONOMBR1,ALUMNONOMBR2,ALUMNOAPELLI1,ALUMNOAPELLI2,GRADOSOLI,FECHASOL,GENERO,FECHANACIMIENTO,LUGNACIMIENTO,DIRECC,ZONARE,NACIONALI,TELCASA,CELULAR,RELIGION,BAUTIZ,PRIMCOMUN,CONFIRM,NUEVOING,INSTPROCE,GRADINGR,PARVULA,HERMAN,GRADHERMAN1,GRADHERMAN2,GRADHERMAN3,GRADHERMAN4,GRADHERMAN5,GRADHERMAN6,GRADHERMAN7,GRADHERMAN8,GRADHERMAN9,GRADHERMAN10,GRADHERMAN11,GRADHERMAN12,GRADHERMAN13,GRADHERMAN14,GRADHERMAN15,GRADHERMAN16,GRADHERMAN17,GRADHERMAN18,GRADHERMAN19,GRADHERMAN20,NOMMAD,PROFMAD,LUGTRABMAD,TELTRAB,NOMPAD,PROFPAD,LUGTRABPAD,TELTRABPAD,ESTADOCIV,VIVECON,DISCAP,CUALDISCAP,REPITENTE,VACUNASCOMPLE,PROBLEMASDESAL,EDUCESPECIAL,TRABREMUN,CUALTRAB,RESPON1NOM1,RESPON1NOM2,RESPON1APELL1,RESPON1APELL2,RESPON1DUI,RESPON1TEL,RESPON1CEL,RESPON2NOM1,RESPON2NOM2,RESPON2APELL1,RESPON2APELL2,RESPON2DUI,RESPON2TEL,RESPON2CEL,EDAD,NUMHERMAN)";
         string values = " values (" + TxtNIE.Text + ", '" + TxtNombreAlum1.Text + "', '" + TxtNombreAlum2.Text + "', '" + TxtApellidoAlum1.Text + "', '" + TxtApellidoAlum2.Text + "', '" + gradoalum + "', '" + fecha + "', '" + DdlGenero.Text + "', '" + TxtNacimento.Text + "', '" + TxtLugardenac.Text + "', '" + TxtDireccion.Text + "', '" + DdlZona.Text + "', '" + TxtNacionalidad.Text + "', " + TxtTelCasa.Text + ", " + TxtCel.Text + ", '" + TxtReligion.Text + "', '" + bautismo + "', '" + primeracom + "', '" + confirma + "', '" + DdlIngreso.Text + "', '" + TxtInstproc.Text + "', '" + TxtGradodesde.Text + "', '" + DdlParvularia.Text + "', '";
         string values2 = DdlHermanos.Text + "', '" + TxtGrado1.Text + "', '" + TxtGrado2.Text + "', '" + TxtGrado3.Text + "', '" + TxtGrado4.Text + "', '" + TxtGrado5.Text + "', '" + TxtGrado6.Text + "', '" + TxtGrado7.Text + "', '" + TxtGrado8.Text + "', '" + TxtGrado9.Text + "', '" + TxtGrado10.Text + "', '" + TxtGrado11.Text + "', '" + TxtGrado12.Text + "', '" + TxtGrado13.Text + "', '" + TxtGrado14.Text + "', '" + TxtGrado15.Text + "', '" + TxtGrado16.Text + "', '" + TxtGrado17.Text + "', '" + TxtGrado18.Text + "', '" + TxtGrado19.Text + "', '" + TxtGrado20.Text + "', '" + TxtNomMadre.Text + "', '" + TxtProfMadre.Text + "', '" + TxtLugTrabMadre.Text + "', '";
         string values3 = TxtTelTrabMadre.Text + "', '" + TxtNomPadre.Text + "', '" + TxtProfPadre.Text + "', '" + TxtLugTrabPadre.Text + "', '" + TxtTelTrabPadre.Text + "', '" + RblStadCivil.Text + "', '" + RblVivecon.Text + "', '" + DdlDiscp.Text + "', '" + TxtDisc.Text + "', '" + DdlAlumRep.Text + "', '" + DdlAlumVacunas.Text + "', '" + TxtProbSalud.Text + "', '" + DdlSpecial.Text + "', '" + DdlTrabAlum.Text + "', '" + TxtTrabAlum.Text + "', '" + TxtNom1Responsable.Text + "', '" + TxtNom2Responsable.Text + "', '" + TxtApell1Responsable.Text + "', '" + TxtApell2Responsable.Text + "', '" + TxtDUIResponsable.Text + "', '" + TxtTelResponsable.Text + "', '";
-            string values4 = TxtCelularResponsable.Text + "', '" + TxtNom1Responsable1.Text + "', '" + TxtNom2Responsable1.Text + "', '" + TxtApell1Responsable1.Text + "', '" + TxtApell2Responsable1.Text + "', '" + TxtDUIResponsable1.Text + "', '" + TxtTelResponsable1.Text + "', '" + TxtCelularResponsable1.Text + "');";
-            
+            string values4 = TxtCelularResponsable.Text + "', '" + TxtNom1Responsable1.Text + "', '" + TxtNom2Responsable1.Text + "', '" + TxtApell1Responsable1.Text + "', '" + TxtApell2Responsable1.Text + "', '" + TxtDUIResponsable1.Text + "', '" + TxtTelResponsable1.Text + "', '" + TxtCelularResponsable1.Text + "', '" + TxtEdad.Text +"', '"+ TxtHermNum.Text+ "');";
         string superconsulta = insert + values + values2 + values3 + values4;
-
+        CleanControl(this.Controls);
         conexion con2 = new conexion();
         con2.insert2(superconsulta);
+        Session.Add("NIE", NIE);
+        Server.Transfer("UsuarioPremat.aspx");
+        Response.Redirect("UsuarioPramat.aspx");
+    }
 
+    public void limpiar()
+    {
+        TxtNIE.Text = "";
+        TxtNombreAlum1.Text = "";
+        TxtNombreAlum2.Text = "";
+        TxtApellidoAlum1.Text = "";
+        TxtApellidoAlum2.Text = "";
+        gradoalum = "";
+        Session.Remove("Grado");
+        DdlGenero.SelectedIndex = 0;
+        TxtNacimento.Text = "";
 
     }
 
+    public void CleanControl(ControlCollection controles)
+    {
+        foreach (Control control in controles)
+        {
+            if (control is TextBox)
+                ((TextBox)control).Text = string.Empty;
+            else if (control is DropDownList)
+                ((DropDownList)control).ClearSelection();
+            else if (control is RadioButtonList)
+                ((RadioButtonList)control).ClearSelection();
+            else if (control is CheckBoxList)
+                ((CheckBoxList)control).ClearSelection();
+            else if (control is RadioButton)
+                ((RadioButton)control).Checked = false;
+            else if (control is CheckBox)
+                ((CheckBox)control).Checked = false;
+            else if (control.HasControls())
+                //Esta linea detécta un Control que contenga otros Controles
+                //Así ningún control se quedará sin ser limpiado.
+                CleanControl(control.Controls);
+        }
+    }
     protected void Verificar_Click(object sender, EventArgs e)
     {
         MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -427,7 +466,7 @@ public partial class Matricula : System.Web.UI.Page
         }
         else
         {
-            if (DdlParvularia.Text == "Si" && string.IsNullOrEmpty(TxtHermNum.Text))
+            if (DdlHermanos.Text == "Si" && string.IsNullOrEmpty(TxtHermNum.Text))
             {
                 Label5.Text = "Lista de errores.";
                 Label4.Text = Label4.Text + "<br/> - Por favor defina el numero de hermanos que estudian aqui.";

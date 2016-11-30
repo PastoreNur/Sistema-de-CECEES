@@ -286,7 +286,7 @@
         </asp:panel>
         <br />
         <br />
-        <h2>Personas responsables del rendimiento escolar dell de la niño/a y que lo/a pueden RETIRAR de la escuela.</h2>
+        <h2>Personas responsables del rendimiento escolar del de la niño/a y que lo/a pueden RETIRAR de la escuela.</h2>
         <br />
         <h2>Primer responsable:</h2>
         <br />
