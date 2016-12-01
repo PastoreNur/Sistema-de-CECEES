@@ -348,7 +348,9 @@
         <asp:Button ID="Verificar" runat="server" CssClass="form-control" Text="Verificar" OnClick="Verificar_Click" />
 
         <asp:Label ID="BtnVer" CssClass="btn btn-danger form-control" runat="server" data-toggle="modal" data-target="#myModal" Visible="false" Text="Ver"></asp:Label>
-        <!-- Modal -->
+      
+        
+          <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

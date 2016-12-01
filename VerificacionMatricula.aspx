@@ -266,10 +266,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <asp:Label ID="Label55" class="modal-title h4" runat="server" Text="Label"></asp:Label>
+          <asp:Label ID="Label55" class="modal-title h4" runat="server" Text="Notificar error."></asp:Label>
       </div>
       <div class="modal-body">
-          <asp:Label ID="Label56" runat="server" Text=""></asp:Label>
+          <asp:Label ID="Label56" runat="server" Text="Comentario:"></asp:Label>
+          <asp:TextBox ID="TxtCOM" CssClass="form-control" runat="server"></asp:TextBox>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Atras</button>

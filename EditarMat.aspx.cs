@@ -6,12 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 
-public partial class VerificacionMatricula : System.Web.UI.Page
+
+public partial class EditarMat : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-        
+
         try
         {
             string sql = "Select * from alumnospremat where NIE='" + Session["NIE"].ToString() + "';";
@@ -21,13 +21,13 @@ public partial class VerificacionMatricula : System.Web.UI.Page
             builder.Password = "prueba123";
             builder.Database = "db_a131fe_bd";
             MySqlConnection con = new MySqlConnection(builder.ToString());
-        con.Open();
-        MySqlCommand Ejecutar_Consulta = new MySqlCommand(sql, con);
+            con.Open();
+            MySqlCommand Ejecutar_Consulta = new MySqlCommand(sql, con);
             MySqlDataReader rdr = Ejecutar_Consulta.ExecuteReader();
-        if (!rdr.Read())
-        {
-            Label1.Text = "Es esto man";
-        }
+            if (!rdr.Read())
+            {
+                Label1.Text = "Es esto man";
+            }
             TxtHermNum.Text = rdr["NUMHERMAN"].ToString();
             Label54.Text = Convert.ToString(Session["NIE"]);
             Label1.Text = rdr["ALUMNOAPELLI1"].ToString();
@@ -45,16 +45,166 @@ public partial class VerificacionMatricula : System.Web.UI.Page
             Label13.Text = rdr["CELULAR"].ToString();
             Label14.Text = rdr["RELIGION"].ToString();
 
+
+            if (rdr["GENERO"].ToString() == "Masculino")
+            {
+                Label5.SelectedIndex = 1;
+            }
+            else
+            {
+                Label5.SelectedIndex = 2;
+
+            }
+            if (rdr["ZONARE"].ToString() == "Urbano")
+            {
+                Label9.SelectedIndex = 1;
+            }
+            else
+            {
+                Label9.SelectedIndex = 2;
+            }
+            if (rdr["NUEVOING"].ToString()== "Si")
+            {
+                Label16.SelectedIndex = 1;
+            }
+            else
+            {
+                Label16.SelectedIndex = 1;
+
+            }
+            if (rdr["PARVULA"].ToString() == "Si")
+            {
+                Label19.SelectedIndex = 1;
+            }
+            else
+            {
+                Label19.SelectedIndex = 2;
+            }
+            if (rdr["HERMAN"].ToString() == "Si")
+            {
+                Label20.SelectedIndex = 1;
+            }
+            else
+            {
+                Label20.SelectedIndex = 2;
+            }
+            if (rdr["ESTADOCIV"].ToString() == " Matrimonio Eclesial")
+            {
+                Label30.SelectedIndex = 1;
+            }
+            else if (rdr["ESTADOCIV"].ToString() == " Casados solo civil")
+            {
+                Label30.SelectedIndex = 2;
+
+            }
+            else if (rdr["ESTADOCIV"].ToString() == " Divorciados")
+            {
+                Label30.SelectedIndex = 3;
+
+            }
+            else if (rdr["ESTADOCIV"].ToString() == " Separados")
+            {
+                Label30.SelectedIndex = 4;
+
+            }
+            else if (rdr["ESTADOCIV"].ToString() == " Viuda/o")
+            {
+                Label30.SelectedIndex = 5;
+
+            }
+            else if (rdr["ESTADOCIV"].ToString() == " Madre soltera")
+            {
+                Label30.SelectedIndex = 6;
+
+            }
+            else if (rdr["ESTADOCIV"].ToString() == " Padre soltero")
+            {
+                Label30.SelectedIndex = 7;
+
+            }
+            else
+            {
+                Label30.SelectedIndex = 8;
+
+            }
+
+            if (rdr["VIVECON"].ToString() == "Ambos padres")
+            {
+                Label31.SelectedIndex = 1;
+            }
+            else if (rdr["VIVECON"].ToString() == "Solo papá")
+            {
+                Label31.SelectedIndex = 2;
+            }
+            else if (rdr["VIVECON"].ToString() == "Solo mamá")
+            {
+                Label31.SelectedIndex = 3;
+            }
+            else if (rdr["VIVECON"].ToString() == "Con abuelos")
+            {
+                Label31.SelectedIndex = 4;
+            }
+            else
+            {
+                Label31.SelectedIndex = 5;
+            }
+            if (rdr["DISCAP"].ToString() == "Si")
+            {
+                Label32.SelectedIndex = 1;
+            }
+            else
+            {
+                Label32.SelectedIndex = 2;
+            }
+
+            if (rdr["REPITENTE"].ToString() == "Si")
+            {
+                Label34.SelectedIndex = 1;
+            }
+            else
+            {
+                Label34.SelectedIndex = 2;
+            }
+
+            if (rdr["VACUNASCOMPLE"].ToString() == "Si")
+            {
+                Label35.SelectedIndex = 1;
+            }
+            else
+            {
+                Label35.SelectedIndex = 2;
+            }
+
+            if (rdr["EDUCESPECIAL"].ToString()=="Si")
+            {
+                Label37.SelectedIndex = 1;
+            }
+            else
+            {
+                Label37.SelectedIndex = 2;
+
+            }
+
+
+            if (rdr["TRABREMUN"].ToString()=="Si")
+            {
+                Label38.SelectedIndex = 1;
+            }
+            else
+            {
+                Label38.SelectedIndex = 1;
+            }
+
+
             if (rdr["BAUTIZ"].ToString() == "Si")
             {
-                Label15.Text = "- Bautismo.";
+                ChBBautismo.Checked = true;
                 if (rdr["PRIMCOMUN"].ToString() == "Si")
                 {
-                    Label15.Text = "<br />- Primera comunión.";
+                    ChBPrimeracom.Checked = true;
                     if (rdr["CONFIRM"].ToString() == "Si")
                     {
-                        Label15.Text = "<br />- Confirmación.";
-
+                        ChBConfirmacion.Checked = true;
                     }
                 }
             }
@@ -246,191 +396,11 @@ public partial class VerificacionMatricula : System.Web.UI.Page
         {
 
         }
-      
-    }
 
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-        string sql1 = "Delete alumnospremat from alumnospremat where NIE='"+Session["NIE"].ToString()+"'";
-        string sql2 = "Delete usuariosmat from usuariosmat where NIE='" + Session["NIE"].ToString() + "'";
-        conexion cone = new conexion();
-        cone.eliminar(sql1);
-        cone.eliminar(sql2);
-    }
-
-
-    protected void Button4_Click(object sender, EventArgs e)
-    {
-        
     }
 
     protected void Aceptar_Click(object sender, EventArgs e)
     {
-        string sql = "Select * from usuariosmat where NIE='" + Session["NIE"].ToString() + "';";
 
-        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-        builder.Server = "mysql5013.smarterasp.net";
-        builder.UserID = "a131fe_bd";
-        builder.Password = "prueba123";
-        builder.Database = "db_a131fe_bd";
-        MySqlConnection con = new MySqlConnection(builder.ToString());
-        MySqlCommand cmd = con.CreateCommand();
-        cmd.CommandText = sql;
-        MySqlDataReader rdr = cmd.ExecuteReader();
-        rdr.Read();
-        string COM1 = rdr["COM1"].ToString();
-        string COM2 = rdr["COM2"].ToString();
-        string COM3 = rdr["COM3"].ToString();
-        string COM4 = rdr["COM4"].ToString();
-        string COM5 = rdr["COM5"].ToString();
-        string COM6 = rdr["COM6"].ToString();
-        string COM7 = rdr["COM7"].ToString();
-        string COM8 = rdr["COM8"].ToString();
-        string COM9 = rdr["COM9"].ToString();
-        string COM10 = rdr["COM10"].ToString();
-        string COM11 = rdr["COM11"].ToString();
-        string COM12 = rdr["COM12"].ToString();
-        string COM13 = rdr["COM13"].ToString();
-        string COM14 = rdr["COM14"].ToString();
-        string COM15 = rdr["COM15"].ToString();
-        string COM16 = rdr["COM16"].ToString();
-        string COM17 = rdr["COM17"].ToString();
-        string COM18 = rdr["COM18"].ToString();
-        string COM19 = rdr["COM19"].ToString();
-        string COM20 = rdr["COM20"].ToString();
-
-        string consulta = "";
-
-        if (string.IsNullOrEmpty(COM1))
-        {
-            COM1 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM1) values ('"+COM1+"') where NIE='"+ Session["NIE"] +"'";
-
-        }
-        else if (string.IsNullOrEmpty(COM2))
-        {
-            COM2 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM2) values ('" + COM2 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM3))
-        {
-            COM3 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM3) values ('" + COM3 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM4))
-        {
-            COM4 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM4) values ('" + COM4 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM5))
-        {
-            COM5 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM5) values ('" + COM5 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM6))
-        {
-            COM6 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM6) values ('" + COM6 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM7))
-        {
-            COM7 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM7) values ('" + COM7 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM8))
-        {
-            COM8 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM8) values ('" + COM8 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM9))
-        {
-            COM9 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM9) values ('" + COM9 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM10))
-        {
-            COM10 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM10) values ('" + COM10 + "') where NIE='" + Session["NIE"] + "'";
-
-
-        }
-        else if (string.IsNullOrEmpty(COM11))
-        {
-            COM11 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM11) values ('" + COM11 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM12))
-        {
-            COM12 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM12) values ('" + COM12 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM13))
-        {
-            COM13 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM13) values ('" + COM13 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM14))
-        {
-            COM14 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM14) values ('" + COM14 + "') where NIE='" + Session["NIE"] + "'";
-
-
-        }
-        else if (string.IsNullOrEmpty(COM15))
-        {
-            COM15 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM15) values ('" + COM15 + "') where NIE='" + Session["NIE"] + "'";
-
-
-        }
-        else if (string.IsNullOrEmpty(COM16))
-        {
-            COM16 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM2) values ('" + COM2 + "') where NIE='" + Session["NIE"] + "'";
-
-
-        }
-        else if (string.IsNullOrEmpty(COM17))
-        {
-            COM17 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM17) values ('" + COM17 + "') where NIE='" + Session["NIE"] + "'";
-
-
-        }
-        else if (string.IsNullOrEmpty(COM18))
-        {
-            COM18 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM18) values ('" + COM18 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM19))
-        {
-            COM19 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM19) values ('" + COM19 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else if (string.IsNullOrEmpty(COM20))
-        {
-            COM20 = TxtCOM.Text;
-            consulta = "Insert into usuarios (COM20) values ('" + COM20 + "') where NIE='" + Session["NIE"] + "'";
-
-        }
-        else
-        {
-            Label56.Text = "Limite de comentarios alcanzados.";
-            TxtCOM.Visible = false;
-        }
-        cmd.CommandText = consulta;
     }
 }

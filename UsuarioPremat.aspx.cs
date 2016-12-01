@@ -79,5 +79,7 @@ public partial class UsuarioPremat : System.Web.UI.Page
             string script = "alert('¡ERROR!');";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
         }
+        Session.Add("NIE", NIE.ToString());
+        Server.Transfer("VerificacionMatricula.aspx");
     }
 }

@@ -169,9 +169,9 @@ public partial class Account_grado : System.Web.UI.Page
             }
             else
             {
-                string sql = "INSERT INTO grado (horas_clase, grado, seccion, nombre_grado, id_orientador, tipo_grado) values ('" + txtHorasClase.Text + "','" + DpdGrado.SelectedItem.Text + "', '" + DpdSeccion.SelectedItem.Text+ "','" + txtNombreAbreviado.Text + "','" + txtPrimerApellido.Text + "','" + txtSegundoApellido.Text + "','" + txtEspecialidad.Text + "','" + txtTelefono.Text + "','" + txtDireccion.Text + "', '" + DpdEducacion.SelectedItem.Text + "', '" + DpdTurno.SelectedItem.Text + "');";
+                //string sql = "INSERT INTO grado (horas_clase, grado, seccion, nombre_grado, id_orientador, tipo_grado) values ('" + txtHorasClase.Text + "','" + DpdGrado.SelectedItem.Text + "', '" + DpdSeccion.SelectedItem.Text+ "','" + txtNombreAbreviado.Text + "','" + txtPrimerApellido.Text + "','" + txtSegundoApellido.Text + "','" + txtEspecialidad.Text + "','" + txtTelefono.Text + "','" + txtDireccion.Text + "', '" + DpdEducacion.SelectedItem.Text + "', '" + DpdTurno.SelectedItem.Text + "');";
                 conexion con2 = new conexion();
-                con2.insert(sql);
+                //con2.insert(sql);
 
                 string script = "alert('¡El/la docente se registró exitosamente!');";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
