@@ -279,7 +279,12 @@ public partial class Account_grado : System.Web.UI.Page
         MySqlDataAdapter da = new MySqlDataAdapter(OrdenSqlSelect.CommandText, conn);
         DataSet ds = new DataSet();
         da.Fill(ds);
-        
+
+        string sql = "SELECT * FROM grado WHERE nombre_grado='" + DpdNomGrado.SelectedItem.Text + "'";
+        MySqlCommand query = conn.CreateCommand();
+        query.CommandText = sql;
+
+
         this.DpdNomGrado.DataSource = ds;
         this.DpdNomGrado.DataValueField = "nombre_grado";
         this.DpdNomGrado.DataTextField = "nombre_grado";
