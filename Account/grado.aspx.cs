@@ -12,6 +12,109 @@ public partial class Account_grado : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        cargarGrid();
+        Label.Visible = false;
+        Label1.Visible = false;
+        Label2.Visible = false;
+        Label3.Visible = false;
+        Label4.Visible = false;
+        Label5.Visible = false;
+        Label6.Visible = false;
+        txtHorasClase.Visible = false;
+        txtNombreAbreviado.Visible = false;
+        DpdEducacion.Visible = false;
+        DpdGrado.Visible = false;
+        DpdOrientador.Visible = false;
+        DpdSeccion.Visible = false;
+        BtnRegistrar.Visible = false;
+        BtnEliminar.Visible = false;
+
+        try
+        {
+            if (Request.Params["Action"] != null)
+            {
+                string denied = Request.Params["Action"];
+
+                if (denied == "registrados")
+                {
+                    lblHorasClase.Visible = false;
+                    txtHorasClasesEdit.Visible = false;
+                    Label.Visible = false;
+                    Label1.Visible = false;
+                    Label2.Visible = false;
+                    Label3.Visible = false;
+                    Label4.Visible = false;
+                    Label5.Visible = false;
+                    Label6.Visible = false;
+                    txtHorasClase.Visible = false;
+                    txtNombreAbreviado.Visible = false;
+                    DpdEducacion.Visible = false;
+                    DpdGrado.Visible = false;
+                    DpdOrientador.Visible = false;
+                    DpdSeccion.Visible = false;
+
+                }
+                else if (denied == "registrar")
+                {
+                    GradosRegistradosGV.Visible = false;
+                    lblHorasClase.Visible = false;
+                    txtHorasClasesEdit.Visible = false;
+                    Label.Visible = true;
+                    Label1.Visible = true;
+                    Label2.Visible = true;
+                    Label3.Visible = true;
+                    Label4.Visible = true;
+                    Label5.Visible = true;
+                    Label6.Visible = true;
+                    txtHorasClase.Visible = true;
+                    txtNombreAbreviado.Visible = true;
+                    DpdEducacion.Visible = true;
+                    DpdGrado.Visible = true;
+                    DpdOrientador.Visible = true;
+                    DpdSeccion.Visible = true;
+                    BtnRegistrar.Visible = true;
+                    BtnEliminar.Visible = false;
+                    
+                }
+                else if (denied == "editar")
+                {
+                    GradosRegistradosGV.Visible = false;
+                    Label.Visible = true;
+                    Label1.Visible = true;
+                    Label2.Visible = true;
+                    Label3.Visible = false;
+                    Label4.Visible = true;
+                    Label5.Visible = true;
+                    Label6.Visible = false;
+                    DpdEducacion.Visible = true;
+                    DpdGrado.Visible = false;
+                    DpdOrientador.Visible = true;
+                    DpdSeccion.Visible = false;
+                    DpdNomGrado.Visible = true;
+                    txtGrado.Visible = true;
+                    txtSeccion.Visible = true;
+                    txtHorasClase.Visible = false;
+                    lblNomG.Visible = true;
+                    BtnEliminar.Visible = true;
+                    BtnBuscar.Visible = true;
+                    CargarNombres();
+                }
+                else
+                {
+                    
+                    GradosRegistradosGV.Visible = true;
+                }
+            }
+            
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+   public void cargarGrid()
+    {
 
         MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
         builder.Server = "mysql5013.smarterasp.net";
@@ -28,18 +131,6 @@ public partial class Account_grado : System.Web.UI.Page
         GradosRegistradosGV.DataBind();
         conn.Close();
 
-        
-
-    }
-
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        
     }
 
     protected void DpdEducacion_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,78 +207,74 @@ public partial class Account_grado : System.Web.UI.Page
 
     protected void BtnRegistrar_Click(object sender, EventArgs e)
     {
-       // try { 
-
-        string consulta;
-
-        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-        builder.Server = "mysql5013.smarterasp.net";
-        builder.UserID = "a131fe_bd";
-        builder.Password = "prueba123";
-        builder.Database = "db_a131fe_bd";
-        MySqlConnection con = new MySqlConnection(builder.ToString());
-        MySqlCommand query = con.CreateCommand();
-
-        con.Open();
-        consulta = "SELECT * FROM grado WHERE grado='" + DpdGrado.SelectedItem.Text + "' AND seccion='"+DpdSeccion.SelectedItem.Text+"' AND tipo_grado='"+DpdEducacion.SelectedItem.Text+"'";
-        query.CommandText = consulta;
-        MySqlDataReader leer = query.ExecuteReader();
-
-
-        bool validar = leer.HasRows;
-
-
-        if (validar)
+        try
         {
-            leer.Read();
-            if (leer["tipo_grado"].ToString() == "Bachillerato")
+
+            string consulta;
+
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = "mysql5013.smarterasp.net";
+            builder.UserID = "a131fe_bd";
+            builder.Password = "prueba123";
+            builder.Database = "db_a131fe_bd";
+            MySqlConnection con = new MySqlConnection(builder.ToString());
+            MySqlCommand query = con.CreateCommand();
+
+            con.Open();
+            consulta = "SELECT * FROM grado WHERE grado='" + DpdGrado.SelectedItem.Text + "' AND seccion='" + DpdSeccion.SelectedItem.Text + "' AND tipo_grado='" + DpdEducacion.SelectedItem.Text + "'";
+            query.CommandText = consulta;
+            MySqlDataReader leer = query.ExecuteReader();
+
+
+            bool validar = leer.HasRows;
+
+
+            if (validar)
             {
-                string script = "alert('¡El " + DpdGrado.SelectedItem.Text + "º año de Bachillerato Sección " + leer["seccion"].ToString() + " ya está registrado!');";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+                leer.Read();
+                if (leer["tipo_grado"].ToString() == "Bachillerato")
+                {
+                    string script = "alert('¡El " + DpdGrado.SelectedItem.Text + "º año de Bachillerato Sección " + leer["seccion"].ToString() + " ya está registrado!');";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+                }
+                else
+                {
+                    string script = "alert('¡El " + DpdGrado.SelectedItem.Text + "º Grado Sección " + leer["seccion"].ToString() + " ya está registrado!');";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+                }
             }
             else
             {
-                string script = "alert('¡El " + DpdGrado.SelectedItem.Text + "º Grado Sección " + leer["seccion"].ToString() + " ya está registrado!');";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+
+                if (txtHorasClase.Text == "" || DpdEducacion.SelectedIndex == 0 || DpdGrado.SelectedIndex == 0 || DpdSeccion.SelectedIndex == 0 || DpdOrientador.SelectedIndex == 0)
+                {
+
+                    string script = "alert('¡No puede dejar campos vacíos!');";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Alerta", script, true);
+
+                }
+                else
+                {
+
+
+                    string sql = "INSERT INTO grado (horas_clase, grado, seccion, nombre_grado, id_orientador, tipo_grado) values ('" + txtHorasClase.Text + "','" + DpdGrado.SelectedItem.Text + "', '" + DpdSeccion.SelectedItem.Text + "','" + txtNombreAbreviado.Text + "','" + iddocente() + "','" + DpdEducacion.SelectedItem.Text + "');";
+                    conexion con2 = new conexion();
+                    con2.insert(sql);
+
+                    string script = "alert('¡El grado se registró exitosamente!');";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
+
+
+
+                }
             }
+
         }
-        else
+        catch (Exception ex)
         {
-           
-            if (txtHorasClase.Text == ""|| DpdEducacion.SelectedIndex == 0 || DpdGrado.SelectedIndex == 0|| DpdSeccion.SelectedIndex == 0||DpdOrientador.SelectedIndex==0)
-            {
-
-                string script = "alert('¡No puede dejar campos vacíos!');";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "Alerta", script, true);
-
-            }
-            else
-            {
-                
-                consulta = "SELECT ID_DOCENTE FROM docentes WHERE nombre_completo_doc = '" + DpdOrientador.SelectedItem.Text + "'";
-                query.CommandText = consulta;
-                MySqlDataReader leer2 = query.ExecuteReader();
-
-                leer2.Read();
-
-                string sql = "INSERT INTO grado (horas_clase, grado, seccion, nombre_grado, id_orientador, tipo_grado) values ('" + txtHorasClase.Text + "','" + DpdGrado.SelectedItem.Text + "', '" + DpdSeccion.SelectedItem.Text+ "','" + txtNombreAbreviado.Text + "','" + leer2["ID_DOCENTE"].ToString() + "','" + DpdEducacion.SelectedItem.Text + "');";
-                conexion con2 = new conexion();
-                con2.insert(sql);
-
-                string script = "alert('¡El/la docente se registró exitosamente!');";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
-
-           
-                
-            }
+            string script2 = "alert('¡El grado NO se registró!');";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script2, true);
         }
-
-    }
-       /* catch (Exception ex)
-        {
-            string script2 = "alert('¡El/la docente NO se registró!');";
-    ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script2, true);
-        }*/
     }
 
     protected void Button4_Click(object sender, EventArgs e)
@@ -204,7 +291,7 @@ public partial class Account_grado : System.Web.UI.Page
         builder.Database = "db_a131fe_bd";
         MySqlConnection conn = new MySqlConnection(builder.ToString());
         conn.Open();
-        MySqlCommand OrdenSqlSelect = new MySqlCommand("SELECT nombre_completo_doc FROM docentes Where Tipo='"+DpdEducacion.SelectedItem.Text+"' OR Tipo='Basica y Bachillerato'", conn);
+        MySqlCommand OrdenSqlSelect = new MySqlCommand("SELECT nombre_completo_doc FROM docentes Where Tipo='" + DpdEducacion.SelectedItem.Text + "' OR Tipo='Basica y Bachillerato'", conn);
         MySqlDataAdapter da = new MySqlDataAdapter(OrdenSqlSelect.CommandText, conn);
         DataSet ds = new DataSet();
         da.Fill(ds);
@@ -217,5 +304,85 @@ public partial class Account_grado : System.Web.UI.Page
         conn.Close();
     }
 
+    public string iddocente()
+    {
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection con = new MySqlConnection(builder.ToString());
+        MySqlCommand cmd = con.CreateCommand();
 
+        // SqlConnection con = new SqlConnection("Data Source=sql5019.smarterasp.net;Persist Security Info=True;User ID=DB_A132F9_SistemaCecees_admin;Password=sistema1234");
+        con.Open();
+        string query = "SELECT* FROM docentes WHERE nombre_completo_doc='"+DpdOrientador.SelectedItem.Text+"'";
+        cmd.CommandText = query;
+        //SqlCommand consulta = new SqlCommand(query,con);
+        MySqlDataReader leer = cmd.ExecuteReader();
+        leer.Read();
+
+        string Docente = leer["ID_DOCENTE"].ToString();
+
+        return Docente;
+    }
+
+
+    protected void BtnGRegistrados_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("grado.aspx?Action=registrados");
+    }
+
+    protected void BtnGRegistrar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("grado.aspx?Action=registrar");
+    }
+
+    protected void BtnEditarG_Click(object sender, EventArgs e)
+    {
+      
+        Response.Redirect("grado.aspx?Action=editar");
+
+    }
+
+    protected void BtnBuscar_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void DpdNomGrado_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    public void CargarNombres()
+    {
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection conn = new MySqlConnection(builder.ToString());
+        conn.Open();
+        MySqlCommand OrdenSqlSelect = new MySqlCommand("SELECT * FROM grado", conn);
+        MySqlDataAdapter da = new MySqlDataAdapter(OrdenSqlSelect.CommandText, conn);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        
+        this.DpdNomGrado.DataSource = ds;
+        this.DpdNomGrado.DataValueField = "nombre_grado";
+        this.DpdNomGrado.DataTextField = "nombre_grado";
+        this.DpdNomGrado.DataBind();
+        this.DpdNomGrado.Items.Insert(0, new ListItem("---Elija una opción---", "0"));
+        this.DpdEducacion.DataSource = ds;
+        this.DpdEducacion.DataValueField = "tipo_grado";
+        this.DpdEducacion.DataTextField = "tipo_grado";
+        this.DpdEducacion.DataBind();
+        this.DpdEducacion.Items.Insert(0, new ListItem("---Elija una opción---", "0"));
+        conn.Close();
+    }
 }
+
+    
+
+

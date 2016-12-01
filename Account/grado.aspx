@@ -28,7 +28,7 @@
                     <div class="row">
 
                         <div class="col-md-12">
-                            <asp:GridView ID="GradosRegistradosGV" visible="false" runat="server" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="100%" >
+                            <asp:GridView ID="GradosRegistradosGV"  runat="server" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Width="100%" >
                         <AlternatingRowStyle BackColor="White" />
                         <EditRowStyle BackColor="#2461BF" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -39,10 +39,24 @@
                     </asp:GridView>
                         </div>
 
-
                         <div class="col-md-12">
+                            <div class="row">
 
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                 
+                                        <asp:Label ID="lblNomG" visible="false" runat="server" Text="Nombre"></asp:Label>
+                                        <asp:DropDownList ID="DpdNomGrado" visible="false" runat="server" CssClass="form-control"></asp:DropDownList>
                             
+                                     </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <asp:Label ID="lblHorasClase" runat="server" Text="H/C diarias"></asp:Label>
+                                    <asp:TextBox ID="txtHorasClasesEdit" CssClass="form-control" runat="server"></asp:TextBox>
+                                </div>
+
+                            </div>
+
 
                             <div class="row">
                                 <div class="col-md-4">
@@ -54,13 +68,18 @@
                                             <asp:ListItem>Basica</asp:ListItem>
                                             <asp:ListItem>Bachillerato</asp:ListItem>
                                          </asp:DropDownList>
+                                         <asp:TextBox ID="txtEducacion" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
                                     </div>
 
                                 </div>
+
+                                
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <asp:Label ID="Label4" runat="server" Text="Grado"></asp:Label>
                                         <asp:DropDownList ID="DpdGrado" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="false" OnSelectedIndexChanged="DpdGrado_SelectedIndexChanged"></asp:DropDownList>
+                                        <asp:TextBox ID="txtGrado" CssClass="form-control" runat="server" Visible="false"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -72,6 +91,7 @@
                                             <asp:ListItem>B</asp:ListItem>
                                             <asp:ListItem>C</asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:TextBox ID="txtSeccion" CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                                
@@ -97,6 +117,7 @@
                             <div class="form-group">
                                 <asp:Label ID="Label5" runat="server" Text="Orientador"></asp:Label>
                                 <asp:DropDownList ID="DpdOrientador" runat="server" CssClass="form-control"></asp:DropDownList>
+                                
                             </div>
 
                         </div>
@@ -112,8 +133,9 @@
                         <div class="col-md-6">
                             
                                 <asp:Button ID="BtnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClick="BtnRegistrar_Click" />
-                                <asp:Button ID="Button4" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="Button4_Click" />
-                                
+                            <asp:Button ID="BtnBuscar" visible="false" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BtnBuscar_Click"/>    
+                            <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="Button4_Click" />
+                                 
                             
                         </div>
                         <div class="col-md-3">
@@ -142,8 +164,9 @@
         </div>
         <div class="panel-body">
 
-            <asp:Button ID="Button1" runat="server" Text="Grados Registrados" OnClick="Button1_Click" />
-            <asp:Button ID="Button3" runat="server" Text="Registrar grado" OnClick="Button3_Click" />
+            <asp:Button ID="BtnGRegistrados" runat="server" Text="Grados Registrados" OnClick="BtnGRegistrados_Click" CssClass="btn-block btn btn-primary" />
+            <asp:Button ID="BtnEditarG" runat="server" Text="Editar grado" CssClass="btn btn-primary btn-block" OnClick="BtnEditarG_Click"/>
+            <asp:Button ID="BtnGRegistrar" runat="server" Text="Registrar grado" OnClick="BtnGRegistrar_Click" CssClass="btn-block btn btn-primary"/>
             
         </div>
 
