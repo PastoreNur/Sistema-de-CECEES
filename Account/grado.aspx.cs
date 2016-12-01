@@ -176,9 +176,7 @@ public partial class Account_grado : System.Web.UI.Page
                 string script = "alert('¡El/la docente se registró exitosamente!');";
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "Información", script, true);
 
-                sql = "INSERT INTO usuarios (ID_USUARIO, cod_user, contra, nombre_user, tipo_user, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido) values ('" + txtNIP.Text + "','" + txtNIP.Text + "','" + txtNIP.Text + "','" + txtPrimerNombre.Text + " " + txtPrimerApellido.Text + "','Docente','" + txtPrimerNombre.Text + "','" + txtSegundoNombre.Text + "','" + txtPrimerApellido.Text + "','" + txtSegundoApellido.Text + "');";
-                con2.insert(sql);
-                borrar();
+                
             }
         }
 
@@ -194,4 +192,110 @@ public partial class Account_grado : System.Web.UI.Page
     {
 
     }
+
+    public void cargarDocentes()
+    {
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection conn = new MySqlConnection(builder.ToString());
+        conn.Open();
+        MySqlCommand OrdenSqlSelect = new MySqlCommand("SELECT nombre_completo_doc FROM docentes Where Tipo='" + DpdEducacion.SelectedItem.Text + "' OR Tipo='Basica y Bachillerato'", conn);
+        MySqlDataAdapter da = new MySqlDataAdapter(OrdenSqlSelect.CommandText, conn);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        this.DpdOrientador.DataSource = ds;
+        this.DpdOrientador.DataValueField = "nombre_completo_doc";
+        this.DpdOrientador.DataTextField = "nombre_completo_doc";
+        this.DpdOrientador.DataBind();
+        this.DpdOrientador.Items.Insert(0, new ListItem("---Elija una opción---", "0"));
+
+        conn.Close();
+    }
+
+    public string iddocente()
+    {
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection con = new MySqlConnection(builder.ToString());
+        MySqlCommand cmd = con.CreateCommand();
+
+        // SqlConnection con = new SqlConnection("Data Source=sql5019.smarterasp.net;Persist Security Info=True;User ID=DB_A132F9_SistemaCecees_admin;Password=sistema1234");
+        con.Open();
+        string query = "SELECT* FROM docentes WHERE nombre_completo_doc='"+DpdOrientador.SelectedItem.Text+"'";
+        cmd.CommandText = query;
+        //SqlCommand consulta = new SqlCommand(query,con);
+        MySqlDataReader leer = cmd.ExecuteReader();
+        leer.Read();
+
+        string Docente = leer["ID_DOCENTE"].ToString();
+
+        return Docente;
+    }
+
+
+    protected void BtnGRegistrados_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("grado.aspx?Action=registrados");
+    }
+
+    protected void BtnGRegistrar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("grado.aspx?Action=registrar");
+    }
+
+    protected void BtnEditarG_Click(object sender, EventArgs e)
+    {
+      
+        Response.Redirect("grado.aspx?Action=editar");
+
+    }
+
+    protected void BtnBuscar_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void DpdNomGrado_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    public void CargarNombres()
+    {
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = "mysql5013.smarterasp.net";
+        builder.UserID = "a131fe_bd";
+        builder.Password = "prueba123";
+        builder.Database = "db_a131fe_bd";
+        MySqlConnection conn = new MySqlConnection(builder.ToString());
+        conn.Open();
+        MySqlCommand OrdenSqlSelect = new MySqlCommand("SELECT * FROM grado", conn);
+        MySqlDataAdapter da = new MySqlDataAdapter(OrdenSqlSelect.CommandText, conn);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        
+        this.DpdNomGrado.DataSource = ds;
+        this.DpdNomGrado.DataValueField = "nombre_grado";
+        this.DpdNomGrado.DataTextField = "nombre_grado";
+        this.DpdNomGrado.DataBind();
+        this.DpdNomGrado.Items.Insert(0, new ListItem("---Elija una opción---", "0"));
+        this.DpdEducacion.DataSource = ds;
+        this.DpdEducacion.DataValueField = "tipo_grado";
+        this.DpdEducacion.DataTextField = "tipo_grado";
+        this.DpdEducacion.DataBind();
+        this.DpdEducacion.Items.Insert(0, new ListItem("---Elija una opción---", "0"));
+        conn.Close(); 
+
+
+    }
 }
+
+    
+
+
