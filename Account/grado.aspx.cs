@@ -121,6 +121,10 @@ public partial class Account_grado : System.Web.UI.Page
 
     protected void BtnRegistrar_Click(object sender, EventArgs e)
     {
+        try
+        {
+
+        
         string consulta;
 
         MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();

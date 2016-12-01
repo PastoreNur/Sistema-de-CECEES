@@ -7,7 +7,7 @@
    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div class="panel panel-primary">
+    <div class="panel panel-primary">
     <div class="panel-heading">
 
         <h3>Verificar información</h3>
@@ -250,14 +250,36 @@
         <div class="col-md-12">
             <div class="col-md-12">
         <asp:Button ID="Button3" CssClass="col-md-4 btn btn-danger" runat="server" Text="Eliminar" OnClick="Button3_Click" />
-        <asp:Button ID="Button4" CssClass="col-md-4 btn btn-default" runat="server" Text="Notificar error" OnClick="Button4_Click" />
         <asp:Button ID="Button1" CssClass="col-md-4 btn btn-primary" runat="server" Text="Verificar" />
+                <asp:Label ID="Label57" CssClass="col-md-4 btn btn-default" data-toggle="modal" data-target="#myModal" runat="server" Text="Notificar error"></asp:Label>
            </div>
                  </div>
     </div>
     </div>
     </div>
         <asp:TextBox ID="TxtHermNum" Visible="false" runat="server"></asp:TextBox>
+
+
+        <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <asp:Label ID="Label55" class="modal-title h4" runat="server" Text="Label"></asp:Label>
+      </div>
+      <div class="modal-body">
+          <asp:Label ID="Label56" runat="server" Text=""></asp:Label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Atras</button>
+
+                  <asp:button ID="Aceptar" runat="server" class="btn btn-primary" text="Enviar" OnClick="Aceptar_Click" />
+
+      </div>
+    </div>
+  </div>
+</div>
 
 </asp:Content>
 
