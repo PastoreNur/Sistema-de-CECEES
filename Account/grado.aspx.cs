@@ -379,7 +379,9 @@ public partial class Account_grado : System.Web.UI.Page
         this.DpdEducacion.DataTextField = "tipo_grado";
         this.DpdEducacion.DataBind();
         this.DpdEducacion.Items.Insert(0, new ListItem("---Elija una opción---", "0"));
-        conn.Close();
+        conn.Close(); 
+
+
     }
 }
 

@@ -46,7 +46,7 @@
                                     <div class="form-group">
                                  
                                         <asp:Label ID="lblNomG" visible="false" runat="server" Text="Nombre"></asp:Label>
-                                        <asp:DropDownList ID="DpdNomGrado" visible="false" runat="server" CssClass="form-control"></asp:DropDownList>
+                                        <asp:DropDownList ID="DpdNomGrado" visible="false" runat="server" CssClass="form-control" OnSelectedIndexChanged="DpdNomGrado_SelectedIndexChanged"></asp:DropDownList>
                             
                                      </div>
                                 </div>
